@@ -1,4 +1,4 @@
-public class Entity {
+public abstract class Entity {
     private int HP;
     private int Atk;
     private int Def;
@@ -36,4 +36,5 @@ public class Entity {
     public int getSpd(){
         return this.Spd;
     }
+    public abstract String getName();
 }
