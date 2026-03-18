@@ -38,31 +38,35 @@ public class Entity{
     }
 }
 
-public class Item(){
+public class Item{
+
 }
 
 public class Warrior extends Entity{
     Item[] inven = new Item();
     public Warrior(){
-        super();
-        this.inven = ;
+        super(260, 40, 20, 30);
     }
 }
 
 public class Wizard extends Entity{
     public Wizard(){
-        super();
+        super(200, 50, 10, 20);
     }
 }
 
 public class Wolf extends Entity{
     public Wolf(){
-        super();
+        super(55, 35, 15, 25);
     }
 }
 
 public class Goblin extends Entity{
     public Goblin(){
-        super();
+        super(40, 45, 5, 35);
     }
+}
+
+public class statusEffect{
+
 }
