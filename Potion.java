@@ -3,7 +3,7 @@ public class Potion extends Item {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getItemDesc'");
     } 
-    public static String getName() {
+    public String getName() {
         return("Potion");
     }
 }

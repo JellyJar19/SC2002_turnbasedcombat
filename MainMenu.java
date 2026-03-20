@@ -3,9 +3,13 @@ import java.util.Scanner;
 public abstract class MainMenu extends UserInterface {
     public static void printInterface() {
         Scanner sc = new Scanner(System.in);
-        Playable playerChar = new Warrior();
-        Item playerItems[] = new Item[2];
+        Playable playerChar = new Warrior();     //Player character is initially set to warrior, but player can change characters
+        Item playerItems[] = new Item[2];        //Empty rray of 2 items, allow the player to select 2 items
         int choice;
+
+
+        //List current player details
+
         System.out.print("- GAME START -\n\n");
         System.out.print("Current Character: " + playerChar.getName() +"\n\n");
         System.out.print("Player Attributes:\n" +
@@ -15,6 +19,9 @@ public abstract class MainMenu extends UserInterface {
         "\nSpd:" + playerChar.getSpd() + "\n\n" +
         playerChar.getSpecialDesc() + "\n");
         
+
+        //List options player can do
+
         System.out.print("1. Change Characters\n");
         System.out.print("2. Select Items\n");
 
@@ -22,6 +29,9 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("3. Change Difficulty\n");
         System.out.print("4. List Difficulty Details\n");
         System.out.print("5. List Enemy Details\n");
+
+
+        // Ask player to select an option
 
         System.out.print("Please select an option: \n");
         choice = sc.nextInt();
@@ -82,10 +92,14 @@ public abstract class MainMenu extends UserInterface {
         }
     }
 
+
     private static void selectItems(Item[] playerItems) {
         int choice;
         Scanner sc = new Scanner(System.in);
+        
+
         //list item details
+
         System.out.print("1. Potion\n");
         System.out.print(Potion.getItemDesc() + "\n");
         System.out.print("2. Power Stone\n");
@@ -93,10 +107,12 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("3. Smoke Bomb\n");
         System.out.print(SmokeBomb.getItemDesc() + "\n");
 
+
         //User selects item
+        
         System.out.print("You may select 2 items:\n");
         for (int i = 0; i < 2;i++) {
-            System.out.print("Select item " + i);
+            System.out.print("Select item " + Integer.toString(i));
             choice = sc.nextInt();
             while((choice < 1) || (choice > 3)) {
                 System.out.print("Invalid input, please enter a number between 1 and 3.\n");

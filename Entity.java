@@ -1,4 +1,5 @@
 public abstract class Entity {
+    //Extended by subclasses Playable(warrior and wizard), Goblin, Wolf
     private int HP;
     private int Atk;
     private int Def;
