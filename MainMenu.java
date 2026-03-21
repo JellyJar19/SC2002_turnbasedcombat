@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
     static Scanner sc = new Scanner(System.in);    
-    public static void printInterface(Playable playerChar, Item[] playerItems) {
+    public static void printInterface(Playable[] playerChar, Item[] playerItems, Level[] difficultyLevel) {
            
         int choice;
 
@@ -12,13 +12,13 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("- GAME START -\n\n");
 
         while (true) {
-        System.out.print("Current Character: " + playerChar.getName() +"\n\n");
+        System.out.print("Current Character: " + playerChar[0].getName() +"\n\n");
         System.out.print("Player Attributes:\n" +
-        "HP:" + playerChar.getHP() +
-        "\nAtk:" + playerChar.getAttack() +
-        "\nDef:" + playerChar. getDef() +
-        "\nSpd:" + playerChar.getSpd() + "\n\n" +
-        playerChar.getSpecialDesc() + "\n");
+        "HP:" + playerChar[0].getHP() +
+        "\nAtk:" + playerChar[0].getAttack() +
+        "\nDef:" + playerChar[0]. getDef() +
+        "\nSpd:" + playerChar[0].getSpd() + "\n\n" +
+        playerChar[0].getSpecialDesc() + "\n");
         
 
         //List options player can do
@@ -26,7 +26,7 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("1. Change Characters\n");
         System.out.print("2. Select Items\n");
 
-        System.out.print("Current Difficulty: \n");
+        System.out.print("Current Difficulty: " + difficultyLevel[0].getLevel() + "\n");
         System.out.print("3. Change Difficulty\n");
         System.out.print("4. List Difficulty Details\n");
         System.out.print("5. List Enemy Details\n");
@@ -43,7 +43,7 @@ public abstract class MainMenu extends UserInterface {
         }
         switch(choice) {
             case 1: {
-                playerChar = changeCharacters();
+                playerChar[0] = changeCharacters();
                 break;
             }
             case 2: {
@@ -51,7 +51,7 @@ public abstract class MainMenu extends UserInterface {
                 break;
             }
             case 3: {
-
+                changeDifficulty(difficultyLevel);
                 break;
             }
             case 4: {
@@ -77,7 +77,6 @@ public abstract class MainMenu extends UserInterface {
     //Asks user to select a character and returns an entity of the type the user selected
 
         int choice;
-        Scanner sc = new Scanner(System.in);
         System.out.println("\n\n\n\n\nSelect a character:\n");
         System.out.print("1. Warrior\n");
         System.out.print("2. Wizard\n");
@@ -101,9 +100,7 @@ public abstract class MainMenu extends UserInterface {
 
     private static void selectItems(Item[] playerItems) {
         int choice;
-        Scanner sc = new Scanner(System.in);
         
-
         //list item details
 
         System.out.print("1. Potion\n");
@@ -144,7 +141,25 @@ public abstract class MainMenu extends UserInterface {
     
     }
 
-    
+    private static void changeDifficulty(Level[] difficultyLevel) {
+        int choice;
+
+        System.out.print("Select a difficulty: \n");
+        System.out.print("1. EASY\n");
+        System.out.print("2. MEDIUM\n");
+        System.out.print("3. HARD\n");
+        choice = sc.nextInt();
+
+        while((choice < 1) || (choice > 3)) {
+            System.out.print("Invalid input, please enter a number between 1 and 3.\n");
+            choice = sc.nextInt();
+        }
+
+        difficultyLevel[0] = new Level(choice);
+        return;
+        }
+
+    }
 
 
-}
+
