@@ -1,16 +1,17 @@
 import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
-    public static void printInterface() {
-        Scanner sc = new Scanner(System.in);
-        Playable playerChar = new Warrior();     //Player character is initially set to warrior, but player can change characters
-        Item playerItems[] = new Item[2];        //Empty rray of 2 items, allow the player to select 2 items
+    static Scanner sc = new Scanner(System.in);    
+    public static void printInterface(Playable playerChar, Item[] playerItems) {
+           
         int choice;
 
 
         //List current player details
 
         System.out.print("- GAME START -\n\n");
+
+        while (true) {
         System.out.print("Current Character: " + playerChar.getName() +"\n\n");
         System.out.print("Player Attributes:\n" +
         "HP:" + playerChar.getHP() +
@@ -29,14 +30,15 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("3. Change Difficulty\n");
         System.out.print("4. List Difficulty Details\n");
         System.out.print("5. List Enemy Details\n");
+        System.out.print( "6. Start Battle\n");
 
 
         // Ask player to select an option
 
         System.out.print("Please select an option: \n");
         choice = sc.nextInt();
-        while ((choice < 1) || (choice > 5)) {
-            System.out.println("Invalid Input. Please enter a number between 1 and 5.\n");
+        while ((choice < 1) || (choice > 6)) {
+            System.out.println("Invalid Input. Please enter a number between 1 and 6.\n");
             choice = sc.nextInt();
         }
         switch(choice) {
@@ -60,7 +62,12 @@ public abstract class MainMenu extends UserInterface {
 
                 break;
             }
+            case 6: {
+                sc.close();
+                return;
+            }
         }
+    }
     
     
     }
@@ -79,7 +86,6 @@ public abstract class MainMenu extends UserInterface {
             System.out.print("Invalid input, please enter 1 or 2.\n");
             choice = sc.nextInt();
         }
-        sc.close();
         switch(choice) {
             case 1: {
                 Playable playerChar = new Warrior();
@@ -112,7 +118,7 @@ public abstract class MainMenu extends UserInterface {
         
         System.out.print("You may select 2 items:\n");
         for (int i = 0; i < 2;i++) {
-            System.out.print("Select item " + Integer.toString(i));
+            System.out.print("Select item " + Integer.toString(i + 1));
             choice = sc.nextInt();
             while((choice < 1) || (choice > 3)) {
                 System.out.print("Invalid input, please enter a number between 1 and 3.\n");
@@ -132,11 +138,13 @@ public abstract class MainMenu extends UserInterface {
                 break;
             }
         }
-
+    }
         System.out.print("You have selected [" + playerItems[0].getName() + "] and [" + playerItems[1].getName() + "]\n");
         return;
+    
     }
-    }
+
+    
 
 
 }
