@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
     static Scanner sc = new Scanner(System.in);    
-    public static void printInterface(Playable playerChar, Item[] playerItems) {
+    public static void printInterface(Playable playerChar, Item[] playerItems, Level difficultyLevel) {
            
         int choice;
 
@@ -26,7 +26,7 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("1. Change Characters\n");
         System.out.print("2. Select Items\n");
 
-        System.out.print("Current Difficulty: \n");
+        System.out.print("Current Difficulty: \n" + difficultyLevel.getLevel());
         System.out.print("3. Change Difficulty\n");
         System.out.print("4. List Difficulty Details\n");
         System.out.print("5. List Enemy Details\n");
@@ -77,7 +77,6 @@ public abstract class MainMenu extends UserInterface {
     //Asks user to select a character and returns an entity of the type the user selected
 
         int choice;
-        Scanner sc = new Scanner(System.in);
         System.out.println("\n\n\n\n\nSelect a character:\n");
         System.out.print("1. Warrior\n");
         System.out.print("2. Wizard\n");
@@ -101,9 +100,7 @@ public abstract class MainMenu extends UserInterface {
 
     private static void selectItems(Item[] playerItems) {
         int choice;
-        Scanner sc = new Scanner(System.in);
         
-
         //list item details
 
         System.out.print("1. Potion\n");
