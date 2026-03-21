@@ -1,8 +1,7 @@
 public class PowerStone extends Item {
 
     public static String getItemDesc() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getItemDesc'");
+        return("PowerStone description insert");
     }
     public String getName() {
         return("Power Stone");

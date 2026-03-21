@@ -1,8 +1,7 @@
 public class SmokeBomb extends Item {
 
     public static String getItemDesc() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getItemDesc'");
+        return("Smoke bomb description insert");
     }
     public String getName() {
             return("Smoke Bomb");
