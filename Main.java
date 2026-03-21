@@ -8,5 +8,8 @@ public class Main {
         Item[] playerItems = new Item[2];         //Array of 2 Items, which can be selected by the player.
 
         MainMenu.printInterface(playerChar, playerItems);  // Pass playerChar and playerItems as references so changes can be made to them in menu.
+        //battle screen
+        //ending screen
+
     }
 }
