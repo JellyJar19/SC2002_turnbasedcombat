@@ -11,6 +11,7 @@ public class Level {
             case 2: {
                 difficultyName = "MEDIUM";
                 backupEnemies = 1;
+                break;
             }
             case 3: {
                 difficultyName = "HARD";
@@ -19,6 +20,7 @@ public class Level {
         }
     }
 
+    
     public String getLevel()  {
         return difficultyName;
     }
@@ -32,14 +34,17 @@ public class Level {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Goblin();
                 currentEnemies[2] = new Goblin();
+                break;
             }
             case "MEDIUM": {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Wolf();
+                break;
             }
             default: {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Goblin();
+                break;
             }
         }
         return;
@@ -53,13 +58,14 @@ public class Level {
             case "MEDIUM": {
                 currentEnemies[0] = new Wolf();
                 currentEnemies[1] = new Wolf();
+                return;
             }
             default: {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Wolf();
                 currentEnemies[2] = new Wolf();
+                return;
             }
         }   
-        return;
     }
 }
