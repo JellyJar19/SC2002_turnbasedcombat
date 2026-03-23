@@ -1,0 +1,71 @@
+public enum StatusEffects {
+    SmokeBombEffect(2){
+        public void onApply(Entity target){
+        //apply action onto target
+    }
+
+    public void startTurn(Entity target){
+        //actions to take during start of turn
+
+    }
+
+    public void endTurn(Entity target){
+        //actions to take during end of turn
+        if (this.duration==0){
+            this.active=false;
+        }
+    }
+    },
+    DefendBuff(2){
+        public void onApply(Entity target){
+        ////apply action onto target
+    }
+
+    public void startTurn(Entity target){
+        //actions to take during start of turn
+
+    }
+
+    public void endTurn(Entity target){
+        //actions to take during end of turn
+        if (this.duration==0){
+            this.active=false;
+        }
+    }
+    },
+    StunEffect(2){
+        public void onApply(Entity target){
+        ////apply action onto target
+    }
+
+    public void startTurn(Entity target){
+        //actions to take during start of turn
+
+    }
+
+    public void endTurn(Entity target){
+        //actions to take during end of turn
+        if (this.duration==0){
+            this.active=false;
+        }
+    }
+    }; 
+
+    int duration;
+    boolean active; //validity of status effect
+
+    private StatusEffects(int dur){
+        this.duration=dur;
+        this.active=true;
+    }
+
+    abstract public void onApply(Entity target);
+
+    abstract public void startTurn(Entity target);
+
+    abstract public void endTurn(Entity target);
+
+    public boolean isActive(){
+        return active;
+    }
+}
