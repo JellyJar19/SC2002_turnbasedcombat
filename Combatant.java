@@ -83,7 +83,7 @@ public abstract class Combatant {
         }
     }
 
-    // getters and setters
+    // getters in case we need
     public abstract List<Action> getAvailableActions();
 
     public String getName() { 
@@ -118,15 +118,4 @@ public abstract class Combatant {
         return statusEffects; 
     }
 
-    public void setAttack(int attack) { 
-        this.attack = attack; 
-    }
-
-    public void setDefense(int defense) { 
-        this.defense = defense; 
-    }
-
-    public void setSkillCooldown(int cd) { 
-        this.skillCooldown = cd; 
-    }
 }
