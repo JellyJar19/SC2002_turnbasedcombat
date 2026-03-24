@@ -1,6 +1,8 @@
-public abstract class Playable extends Entity{
-    //extended by Warrior, Wizzard
-    public Playable(int hitpoint, int attack, int defense, int Speed) {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Player extends Entity{
+    public Player(int hitpoint, int attack, int defense, int Speed) {
         super(hitpoint, attack, defense, Speed);
     }
     public void Defend() {
