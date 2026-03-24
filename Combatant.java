@@ -11,7 +11,9 @@ public abstract class Combatant {
     protected int attack;
     protected int defense;
     protected int speed;
-    protected List<StatusEffects> statusEffects; 
+    protected boolean freeze; //decides whether combatant is able to make actions for that round
+    //protected List<StatusEffects> statusEffects; 
+    protected StatusEffects status;
     protected int skillCooldown;
 
     // constructor
@@ -22,7 +24,8 @@ public abstract class Combatant {
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
-        this.statusEffects = new ArrayList<StatusEffects>();
+        this.freeze=false;
+        this.status = null;
         this.skillCooldown = 0;
     }
 
@@ -76,12 +79,7 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public boolean canAct() {
-        for (StatusEffect effect : statusEffects) {
-            if (effect instanceof StunEffect) {
-                return false;
-            }
-        }
-        return true;
+        return this.freeze;
     }
 
     public void reduceCooldown() {
@@ -121,8 +119,13 @@ public abstract class Combatant {
         return skillCooldown; 
     }
 
+    public void setFreeze(boolean freeze){
+        this.freeze=freeze;
+    }
+    /* 
     public List<StatusEffect> getStatusEffects() { 
         return statusEffects; 
     }
+    */
 
 }

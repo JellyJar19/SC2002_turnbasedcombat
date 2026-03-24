@@ -35,7 +35,7 @@ public enum StatusEffects {
     },
     StunEffect(2){
         public void onApply(Combatant target){
-        ////apply action onto target
+        target.setFreeze(true);
     }
 
     public void startTurn(Combatant target){
@@ -46,6 +46,7 @@ public enum StatusEffects {
     public void endTurn(Combatant target){
         //actions to take during end of turn
         if (this.duration==0){
+            target.setFreeze(false);
             this.active=false;
         }
     }
