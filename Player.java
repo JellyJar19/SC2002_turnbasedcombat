@@ -21,7 +21,7 @@ public abstract class Player extends Combatant{
     }
 
     public List<Item> getInventory(){
-        return inventory;
+        return inventory; // getter for inventory
     }
 
     public void addItem(Item item){
