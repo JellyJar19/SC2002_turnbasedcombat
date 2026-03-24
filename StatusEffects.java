@@ -68,4 +68,5 @@ public enum StatusEffects {
     public boolean isActive(){
         return active;
     }
+    
 }

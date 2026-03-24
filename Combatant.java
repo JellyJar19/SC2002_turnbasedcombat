@@ -43,7 +43,7 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public void addStatusEffect(StatusEffect effect) {
-        statusEffects.add(effect);
+        //statusEffects.add(effect);
         effect.onApply(this);
     }
 
