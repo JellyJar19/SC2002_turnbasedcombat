@@ -1,15 +1,14 @@
-public class Warrior extends Playable {
-    public Warrior(){
-        super(260, 40, 20, 30);
+import java.util.ArrayList;
+import java.util.List;
+
+public class Warrior extends Player {
+    public Warrior(String name){
+        super(name, 260, 40, 20, 30);
     }
-    public String getName() {
-        return("Warrior");
+
+    public List<Action> getAvailableActions() {
+        List<Action> action = super.getAvailableAction();
+        action.add(new ShieldBashAction()); // add warrior special skill
+        return action;
     }
-    public String getSpecialDesc() {
-        return("Special Skill: Shield Bash Effect: Deal\r\n" + //
-                        "BasicAttack damage to selected enemy.\r\n" + //
-                        "Selected enemy is unable to take actions for\r\n" + //
-                        "the current turn and the next turn.\n");
-    }
-    
 }
