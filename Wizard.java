@@ -1,15 +1,32 @@
-public class Wizard extends Playable {
-    public Wizard(){
-        super(200, 50, 10, 20);
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.Action;
+
+public class Wizard extends Player {
+    private int arcaneBlastBonus;
+
+    public Wizard(String name){
+        super(name, 200, 50, 10, 20);\
+        this.arcaneBlastBonus = 0;
     }
-    public String getName() {
-        return("Wizard");
+
+    public List<Action> getAvailActions(){
+        List<Action> action = super.getAvailableAction();
+        action.add(new ArcaneBlastAction()); // add wizard special skill
+        return action;
     }
-    public String getSpecialDesc() {
-        return("Special Skill: Arcane Blast Effect: Deal \r\n" +
-        "BasicAttack damage to all enemies currently \r\n" +  
-        "in combat. Each enemy defeated by Arcane Blast \r\n" +
-        "adds 10 to the Wizard’s Attack, lasting \r\n" +
-        "until end of the level.");
+
+    public void increaseAttackBonus(int value){
+        arcaneBlastBonus += value; // when special skill used, +10 to wizard attack
     }
+
+    public void resetLevelBonus(){
+        arcaneBlastBonus = 0; // when game ends
+    }
+
+    public int getArcaneBlastBonus(){
+        return arcaneBlastBonus; // getter for special skill
+    }
+
 }
