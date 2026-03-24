@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Action;
+
 public abstract class Combatant {
 
     protected String name;
@@ -9,7 +11,7 @@ public abstract class Combatant {
     protected int attack;
     protected int defense;
     protected int speed;
-    protected List<StatusEffect> statusEffects;
+    protected List<StatusEffects> statusEffects; 
     protected int skillCooldown;
 
     // constructor
@@ -20,7 +22,7 @@ public abstract class Combatant {
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
-        this.statusEffects = new ArrayList<StatusEffect>();
+        this.statusEffects = new ArrayList<StatusEffects>();
         this.skillCooldown = 0;
     }
 
@@ -42,13 +44,13 @@ public abstract class Combatant {
     }
 
     // this one need see how keane does it
-    public void addStatusEffect(StatusEffect effect) {
+    public void addStatusEffect(StatusEffects effect) {
         //statusEffects.add(effect);
         effect.onApply(this);
     }
 
     // this one need see how keane does it
-    public void applyStatusEffects() {
+    public void applyStatusEffects() { //iterate through the list and minus off the status effects
         for (StatusEffect effect : statusEffects) {
             effect.onTurnStart(this);
         }
