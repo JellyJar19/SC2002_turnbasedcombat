@@ -27,6 +27,23 @@ public class Level {
     public int getBackupStatus() {
         return backupEnemies;
     }
+    public void setDifficulty(int difficulty) {
+        switch(difficulty) {
+            case 1: {
+                difficultyName = "EASY";
+                break;
+            }
+            case 2: {
+                difficultyName = "MEDIUM";
+                backupEnemies = 1;
+                break;
+            }
+            case 3: {
+                difficultyName = "HARD";
+                backupEnemies = 1;
+            }
+        }
+    } 
 
     public void spawnEnemies(Entity[] currentEnemies) {
         switch(this.difficultyName) {
