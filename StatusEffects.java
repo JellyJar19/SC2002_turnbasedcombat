@@ -59,11 +59,11 @@ public enum StatusEffects {
         this.active=true;
     }
 
-    abstract public void onApply(Entity target);
+    abstract public void onApply(Combatant target);
 
-    abstract public void startTurn(Entity target);
+    abstract public void startTurn(Combatant target);
 
-    abstract public void endTurn(Entity target);
+    abstract public void endTurn(Combatant target);
 
     public boolean isActive(){
         return active;
