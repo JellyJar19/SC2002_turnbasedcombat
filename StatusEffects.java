@@ -34,16 +34,16 @@ public enum StatusEffects {
     }
     },
     StunEffect(2){
-        public void onApply(Entity target){
+        public void onApply(Combatant target){
         ////apply action onto target
     }
 
-    public void startTurn(Entity target){
+    public void startTurn(Combatant target){
         //actions to take during start of turn
 
     }
 
-    public void endTurn(Entity target){
+    public void endTurn(Combatant target){
         //actions to take during end of turn
         if (this.duration==0){
             this.active=false;
