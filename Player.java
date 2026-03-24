@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Action;
+
 public abstract class Player extends Combatant{
     protected List<Item> inventory;
 
@@ -9,6 +11,7 @@ public abstract class Player extends Combatant{
         this.inventory = new ArrayList<>();
     }
     
+    // waiting for the class to be made
     public List<Action> getAvailableAction(){
         List<Action> action = new ArrayList<>();
         action.add(new BasicAttackAction());

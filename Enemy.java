@@ -4,7 +4,7 @@ import java.util.List;
 import javax.swing.Action;
 
 public abstract class Enemy extends Combatant {
-    protected EnemyActionStrategy strategy;
+    protected EnemyActionStrategy strategy; // waiting for the class to be made
 
     public Enemy(String name, int hp, int attack, int defense, int speed){
         super(name, hp, attack, defense, speed); //take from combatant;
@@ -12,7 +12,7 @@ public abstract class Enemy extends Combatant {
     }
 
     public Action chooseAction(Battle battle){
-        return strategy.chooseAction(this, battle); 
+        return strategy.chooseAction(this, battle); // pass enemy and battle state
     }
 
     public List<Action> getAvailableAction(){
