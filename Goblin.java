@@ -1,8 +1,5 @@
-public class Goblin extends Entity {
+public class Goblin extends Enemy {
     public Goblin(){
-            super(40, 45, 5, 35);
-        }
-    public String getName() {
-        return("Goblin");
+        super("Goblin", 55, 35, 15, 25, new BasicAttackOnlyStrategy());
     }
 }

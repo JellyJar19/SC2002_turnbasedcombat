@@ -1,8 +1,5 @@
-public class Wolf extends Entity {
+public class Wolf extends Enemy {
     public Wolf(){
-        super(55, 35, 15, 25);
-    }
-    public String getName() {
-        return("Wolf");
+        super("Wolf", 40, 45, 5, 25, new BasicAttackOnlyStrategy());
     }
 }
