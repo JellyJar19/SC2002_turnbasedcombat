@@ -10,14 +10,9 @@ public abstract class Combatant {
     protected int attack;
     protected int defense;
     protected int speed;
-<<<<<<< HEAD
     protected boolean stun; //decides whether combatant is able to make actions for that round
-    //protected List<StatusEffects> statusEffects; 
-=======
-    protected boolean freeze; //decides whether combatant is able to make actions for that round
-    //protected List<StatusEffects> statusEffects; hi
->>>>>>> f4447c86aadfbdc5577cebe7ee6c71c8ffe6f1bd
-    protected StatusEffects status;
+    protected ArrayList<StatusEffects> statusEffects; //will
+    //protected StatusEffects status;
     protected int skillCooldown;
 
     // constructor
@@ -28,8 +23,9 @@ public abstract class Combatant {
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
-        this.freeze=false;
-        this.status = null;
+        this.stun=false;
+        this.statusEffects = new ArrayList<StatusEffects>;
+        //this.status = null;
         this.skillCooldown = 0;
     }
 
@@ -58,22 +54,24 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects
-        if (status != null status.isActive()){
+        if (status != null && status.isActive()){
             status.startTurn(this);
         }
     }
 
-    
+    // this one need see how keane does it
+    //cannot remove statusEffect elements from list while iterating
     public void removeExpiredEffects() {
-        this.status=null;
+        //this.status=null;
     }
 
     public boolean isAlive() {
         return this.hp > 0;
     }
 
+    // this one need see how keane does it
     public boolean canAct() {
-        return !this.freeze;
+        return !this.stun;
     }
 
     public void reduceCooldown() {
@@ -113,9 +111,8 @@ public abstract class Combatant {
         return skillCooldown; 
     }
 
-    public void setFreeze(boolean freeze){
-        this.freeze=freeze;
+    public void setStun(boolean stun){
+        this.stun=stun;
     }
- 
 
 }

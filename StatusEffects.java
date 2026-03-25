@@ -1,12 +1,14 @@
 public enum StatusEffects {
     SmokeBombEffect(2){
+        
         public void onApply(Combatant target){
         //apply action onto target
+        target.setStun(true);
     }
 
     public void startTurn(Combatant target){
         //actions to take during start of turn
-
+        this.duration--;
     }
 
     public void endTurn(Combatant target){
@@ -23,6 +25,7 @@ public enum StatusEffects {
 
     public void startTurn(Combatant target){
         //actions to take during start of turn
+        this.duration--;
 
     }
 
