@@ -4,6 +4,7 @@ public class ShieldBashAction extends SpecialSkillAction{
         if (activechar instanceof Warrior){
             Warrior activechar = (Warrior) activechar;
             if (this.isOffCooldown(activechar)){
+                System.out.println(activechar.getName() + " used " + this.getName() + " on " + target.getName());
                 BasicAttackAction BasicAttack = new BasicAttackAction();
                 BasicAttack.execute(activechar, battle, target); // deal basic attack damage to target
                 target.addStatusEffect(StunEffect);
