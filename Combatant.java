@@ -10,7 +10,7 @@ public abstract class Combatant {
     protected int attack;
     protected int defense;
     protected int speed;
-    protected boolean freeze; //decides whether combatant is able to make actions for that round
+    protected boolean stun; //decides whether combatant is able to make actions for that round
     //protected List<StatusEffects> statusEffects; 
     protected StatusEffects status;
     protected int skillCooldown;
@@ -53,8 +53,8 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects
-        for (StatusEffect effect : statusEffects) {
-            effect.onTurnStart(this);
+        if (status != null status.isActive()){
+            status.startTurn(this);
         }
     }
 
@@ -70,7 +70,7 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public boolean canAct() {
-        return this.freeze;
+        return !this.freeze;
     }
 
     public void reduceCooldown() {
