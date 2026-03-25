@@ -4,6 +4,7 @@ public class ArcaneBlastAction extends SpecialSkillAction{
         if (activechar instanceof Wizard){
             Wizard activechar = (Wizard) activechar;
             if (this.isOffCooldown(activechar)){
+                System.out.println(activechar.getName() + " used " + this.getName());
                 for (int i = 0; i < target.size(); i++){
                     if (!target[i].isAlive()){
                         continue; // skip over enemies that are already dead
