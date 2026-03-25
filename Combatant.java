@@ -12,7 +12,7 @@ public abstract class Combatant {
     protected int defense;
     protected int speed;
     protected boolean freeze; //decides whether combatant is able to make actions for that round
-    //protected List<StatusEffects> statusEffects; 
+    //protected List<StatusEffects> statusEffects; hi
     protected StatusEffects status;
     protected int skillCooldown;
 
