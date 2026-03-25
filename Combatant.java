@@ -59,8 +59,7 @@ public abstract class Combatant {
         }
     }
 
-    // this one need see how keane does it
-    //cannot remove statusEffect elements from list while iterating
+    
     public void removeExpiredEffects() {
         this.status=null;
     }
@@ -69,7 +68,6 @@ public abstract class Combatant {
         return this.hp > 0;
     }
 
-    // this one need see how keane does it
     public boolean canAct() {
         return this.freeze;
     }
@@ -114,10 +112,6 @@ public abstract class Combatant {
     public void setFreeze(boolean freeze){
         this.freeze=freeze;
     }
-    /* 
-    public List<StatusEffect> getStatusEffects() { 
-        return statusEffects; 
-    }
-    */
+ 
 
 }
