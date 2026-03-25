@@ -2,6 +2,7 @@ public class ArcaneBlastAction extends SpecialSkillAction{
     @Override
     public void execute(Combatant activechar, Battle battle, Combatant[] target){
         if (activechar instanceof Wizard){
+            Wizard activechar = (Wizard) activechar;
             if (this.isOffCooldown(activechar)){
                 for (int i = 0; i < target.size(); i++){
                     if (!target[i].isAlive()){
