@@ -3,6 +3,7 @@ public class DefendAction implements Action{
     public void execute(Combatant activechar, Battle battle){
         int def = activechar.getDef();
         activechar.addStatusEffect(DefendBuff()); //increase def for 2 turns 
+        System.out.println(activechar.getName() + " increased defence by 10. ");
     }
     @Override
     public String getName(){return "Defend";}
