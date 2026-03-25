@@ -10,8 +10,13 @@ public abstract class Combatant {
     protected int attack;
     protected int defense;
     protected int speed;
+<<<<<<< HEAD
     protected boolean stun; //decides whether combatant is able to make actions for that round
     //protected List<StatusEffects> statusEffects; 
+=======
+    protected boolean freeze; //decides whether combatant is able to make actions for that round
+    //protected List<StatusEffects> statusEffects; hi
+>>>>>>> f4447c86aadfbdc5577cebe7ee6c71c8ffe6f1bd
     protected StatusEffects status;
     protected int skillCooldown;
 
@@ -58,8 +63,7 @@ public abstract class Combatant {
         }
     }
 
-    // this one need see how keane does it
-    //cannot remove statusEffect elements from list while iterating
+    
     public void removeExpiredEffects() {
         this.status=null;
     }
@@ -68,7 +72,6 @@ public abstract class Combatant {
         return this.hp > 0;
     }
 
-    // this one need see how keane does it
     public boolean canAct() {
         return !this.freeze;
     }
@@ -113,10 +116,6 @@ public abstract class Combatant {
     public void setFreeze(boolean freeze){
         this.freeze=freeze;
     }
-    /* 
-    public List<StatusEffect> getStatusEffects() { 
-        return statusEffects; 
-    }
-    */
+ 
 
 }
