@@ -62,15 +62,7 @@ public abstract class Combatant {
     // this one need see how keane does it
     //cannot remove statusEffect elements from list while iterating
     public void removeExpiredEffects() {
-        /* 
-        for (StatusEffect effect : statusEffects) {
-            if (!effect.isActive()){
-
-            }
-            effect.decreaseDuration();
-        }
-        statusEffects.removeIf(StatusEffect::isExpired);
-        */
+        this.status=null;
     }
 
     public boolean isAlive() {
