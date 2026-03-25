@@ -11,7 +11,7 @@ public abstract class Combatant {
     protected int defense;
     protected int speed;
     protected boolean stun; //decides whether combatant is able to make actions for that round
-    protected ArrayList<StatusEffects> statusEffects; //will
+    protected ArrayList<StatusEffects> statusEffects; //store the status effects that can be applied, program will check if it,  
     //protected StatusEffects status;
     protected int skillCooldown;
 
@@ -54,9 +54,7 @@ public abstract class Combatant {
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects
-        if (status != null && status.isActive()){
-            status.startTurn(this);
-        }
+        
     }
 
     // this one need see how keane does it
