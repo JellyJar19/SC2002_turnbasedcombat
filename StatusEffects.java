@@ -1,5 +1,5 @@
 public enum StatusEffects {
-    SmokeBombEffect(2){
+    SmokeBombEffect(){
         public void onApply(Combatant target){
         //apply action onto target
         this.active=true;
@@ -18,9 +18,10 @@ public enum StatusEffects {
         }
     }
     },
-    DefendBuff(2){
-        public void onApply(Combatant target){
+    DefendBuff(){
+    public void onApply(Combatant target){
         this.active=true;
+        this.duration=2;
     }
 
     public void startTurn(Combatant target){
@@ -36,14 +37,16 @@ public enum StatusEffects {
         }
     }
     },
-    StunEffect(2){
+    StunEffect(){
         public void onApply(Combatant target){
             this.active=true;
+            this.duration=2;
             target.setStun(true);
     }
 
     public void startTurn(Combatant target){
         //actions to take during start of turn
+        this.duration--;
 
     }
 
@@ -59,8 +62,7 @@ public enum StatusEffects {
     int duration;
     boolean active; //validity of status effect
 
-    private StatusEffects(int dur){
-        this.duration=dur;
+    private StatusEffects(){
         this.active=false; //only become active when onApply is called
     }
 
