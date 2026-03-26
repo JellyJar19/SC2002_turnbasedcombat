@@ -1,9 +1,9 @@
 public class SmokeBomb extends Item {
-
-    public static String getItemDesc() {
-        return("Smoke bomb description insert");
+    public SmokeBomb(){
+        super("SmokeBomb");
     }
-    public String getName() {
-            return("Smoke Bomb");
-        }
+
+    public void use(Player user, Battle battle, Combatant target){
+        user.addStatusEffect(StatusEffects.SmokeBombEffect);
+    }
 }

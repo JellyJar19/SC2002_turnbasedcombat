@@ -3,6 +3,7 @@ public enum StatusEffects {
         public void onApply(Combatant target){
         //apply action onto target
         this.active=true;
+        this.duration = 2;
     }
 
     public void startTurn(Combatant target){
