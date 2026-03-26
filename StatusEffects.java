@@ -49,7 +49,7 @@ public enum StatusEffects {
     public void endTurn(Combatant target){
         //actions to take during end of turn
         if (this.duration==0){
-            target.setFreeze(false);
+            target.setStun(false);
             this.active=false;
         }
     }
