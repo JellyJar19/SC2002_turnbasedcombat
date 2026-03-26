@@ -24,7 +24,7 @@ public abstract class Combatant {
         this.defense = defense;
         this.speed = speed;
         this.stun=false;
-        this.statusEffects = new ArrayList<StatusEffects>;
+        this.statusEffects = new ArrayList<StatusEffects>();
         //this.status = null;
         this.skillCooldown = 0;
     }
