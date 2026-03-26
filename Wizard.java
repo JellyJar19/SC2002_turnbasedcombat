@@ -12,7 +12,8 @@ public class Wizard extends Player {
     }
 
     public List<Action> getAvailActions(){
-        List<Action> action = super.getAvailableAction();
+        // waiting for the class to be made
+        List<Action> action = super.getAvailableAction(); 
         action.add(new ArcaneBlastAction()); // add wizard special skill
         return action;
     }
