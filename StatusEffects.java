@@ -1,59 +1,73 @@
 public enum StatusEffects {
     SmokeBombEffect(){
-    public void onApply(Combatant target){
-        this.active=true;
-        this.duration = 2;
-    }
-
-    public void startTurn(Combatant target){ 
-        if (this.active){
-            this.duration--;
+        
+        public void onApply(Combatant target){
+            this.active=true;
+            this.duration = 2;
         }
-    }
 
-    public void endTurn(Combatant target){
-        if (this.duration==0){
-            this.active=false;
+        public void startTurn(Combatant target){  
+            if (this.active){
+                this.duration--;
+            }
         }
-    }
+
+        public void endTurn(Combatant target){
+            if (this.duration==0){
+                this.active=false;
+            }
+        }
+
     },
     DefendBuff(){
-    public void onApply(Combatant target){
-        this.active=true;
-        this.duration=2;
-    }
-
-    public void startTurn(Combatant target){
-        if (this.active){
-            this.duration--;
+        /*
+        store original defense status of combatant, so that it can revert back to original values if less
+        then 10 defense points were used during the round
+        */
+        private int OGDefense=0; 
+        public void onApply(Combatant target){
+            this.active=true;
+            this.duration=2;
         }
-    }
 
-    public void endTurn(Combatant target){
-        if (this.duration==0){
-            this.active=false;
+        public void startTurn(Combatant target){
+            if (this.active){
+                this.OGDefense=target.getDefense(); //store the original defense values
+                target.defense+=10;//add 10 defense values for the start of the round
+                this.duration--;
+            }
         }
-    }
+
+        public void endTurn(Combatant target){
+            if (target.defense>this.OGDefense){
+                target.defense=this.OGDefense; //only assign back original value if less then 10 defense points were used
+            }
+            //else target.defense should be left at the score it is with
+            this.OGDefense=0; //reset values
+            if (this.duration==0){
+                this.active=false;
+            }
+        }
     },
     StunEffect(){
-    public void onApply(Combatant target){
-        this.active=true;
-        this.duration=2;
-        target.setStun(true);
-    }
-
-    public void startTurn(Combatant target){
-        if (this.active){
-            this.duration--;
+        public void onApply(Combatant target){
+            this.active=true;
+            this.duration=2;
+            target.setStun(true);
         }
-    }
 
-    public void endTurn(Combatant target){
-        if (this.duration==0){
-            target.setStun(false);
-            this.active=false;
+        public void startTurn(Combatant target){
+            if (this.active){
+                this.duration--;
+            }
         }
-    }
+
+        public void endTurn(Combatant target){
+            if (this.duration==0){
+                target.setStun(false);
+                this.active=false;
+            }
+        }
     }; 
 
     int duration;

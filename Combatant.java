@@ -57,16 +57,17 @@ public abstract class Combatant {
     }
 
     // this one need see how keane does it
-    //cannot remove statusEffect elements from list while iterating
+    //no need to remove expired effects, just need to activate or deactive them
+    /* 
     public void removeExpiredEffects() {
         //this.status=null;
     }
+    */
 
     public boolean isAlive() {
         return this.hp > 0;
     }
 
-    // this one need see how keane does it
     public boolean canAct() {
         return !this.stun;
     }
