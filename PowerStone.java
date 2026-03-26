@@ -1,10 +1,19 @@
 public class PowerStone extends Item {
-
-    public static String getItemDesc() {
-        return("PowerStone description insert");
+    public PowerStone(){
+        super("PowerStone");
     }
-    public String getName() {
-        return("Power Stone");
+
+    public void use(Player user, Battle battle, Combatant target){
+        int savedCooldown = user.getSkillCooldown();
+
+        if (user instanceof Warrior){
+            new ShieldBashAction().execute(user, battle, target);
+        }
+        else if (user instanceof Wizard){
+            new ArcaneBlastAction().execute(user, battle, target);
+        }
+
+        user.setSkillCooldown(savedCooldown);
     }
     
 }

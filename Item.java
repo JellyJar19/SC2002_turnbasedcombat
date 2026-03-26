@@ -1,7 +1,14 @@
 public abstract class Item {
-    //extended by subclasses: Potion, SmokeBomb, PowerStone
+    protected String name;
+
+    public Item(String name){
+        this.name = name;
+    }
+
+    public abstract void use(Player user, Battle battle, Combatant target);
+
     public String getName() {
-        return("This shouldn't be printed cuz its supposed to be overriden by the actual items");
+        return name;
     }
     
 }

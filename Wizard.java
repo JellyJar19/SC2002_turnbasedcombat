@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Action;
-
 public class Wizard extends Player {
     private int arcaneBlastBonus;
 
     public Wizard(String name){
-        super(name, 200, 50, 10, 20);\
+        super(name, 200, 50, 10, 20);
         this.arcaneBlastBonus = 0;
     }
 

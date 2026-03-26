@@ -1,8 +1,12 @@
 public class Potion extends Item {
-    public static String getItemDesc() {
-        return("Potion description insert");
-    } 
-    public String getName() {
-        return("Potion");
+    private int healAmount;
+
+    public Potion(){
+        super("Potion");
+        this.healAmount = 100;
+    }
+
+    public void use(Player user, Battle battle, Combatant target){
+        user.heal(healAmount);
     }
 }

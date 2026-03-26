@@ -1,12 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Action;
-
 public abstract class Enemy extends Combatant {
     protected EnemyActionStrategy strategy; // waiting for the class to be made
 
-    public Enemy(String name, int hp, int attack, int defense, int speed){
+    public Enemy(String name, int hp, int attack, int defense, int speed, EnemyActionStrategy strategy){
         super(name, hp, attack, defense, speed); //take from combatant;
         this.strategy = strategy;
     }
