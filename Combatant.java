@@ -12,7 +12,6 @@ public abstract class Combatant {
     protected int speed;
     protected boolean stun; //decides whether combatant is able to make actions for that round
     protected ArrayList<StatusEffects> statusEffects; //store the status effects that can be applied, program will check if it is active or not  
-    //protected StatusEffects status;
     protected int skillCooldown;
 
     // constructor

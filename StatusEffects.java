@@ -1,12 +1,14 @@
 public enum StatusEffects {
     SmokeBombEffect(){
-        public void onApply(Combatant target){
+    public void onApply(Combatant target){
         this.active=true;
         this.duration = 2;
     }
 
     public void startTurn(Combatant target){ 
-        this.duration--;
+        if (this.active){
+            this.duration--;
+        }
     }
 
     public void endTurn(Combatant target){
@@ -22,8 +24,9 @@ public enum StatusEffects {
     }
 
     public void startTurn(Combatant target){
-        this.duration--;
-
+        if (this.active){
+            this.duration--;
+        }
     }
 
     public void endTurn(Combatant target){
@@ -33,15 +36,16 @@ public enum StatusEffects {
     }
     },
     StunEffect(){
-        public void onApply(Combatant target){
-            this.active=true;
-            this.duration=2;
-            target.setStun(true);
+    public void onApply(Combatant target){
+        this.active=true;
+        this.duration=2;
+        target.setStun(true);
     }
 
     public void startTurn(Combatant target){
-        this.duration--;
-
+        if (this.active){
+            this.duration--;
+        }
     }
 
     public void endTurn(Combatant target){
