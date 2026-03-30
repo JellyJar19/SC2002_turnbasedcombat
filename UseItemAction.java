@@ -7,7 +7,7 @@ public class UseItemAction implements Action{
     
     @Override
     public void execute(Combatant activechar, Battle battle, Combatant target){
-        item.Use(activechar, battle, target);
+        item.use(activechar, battle, target);
     }
     
     public String getName(){return item.getName();}
