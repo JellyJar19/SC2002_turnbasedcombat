@@ -15,6 +15,7 @@ public enum StatusEffects {
         public void endTurn(Combatant target){
             if (this.duration==0){
                 this.active=false;
+                this.duration=2;
             }
         }
 
@@ -46,6 +47,7 @@ public enum StatusEffects {
             this.OGDefense=0; //reset values
             if (this.duration==0){
                 this.active=false;
+                this.duration=2;
             }
         }
     },
@@ -66,6 +68,7 @@ public enum StatusEffects {
             if (this.duration==0){
                 target.setStun(false);
                 this.active=false;
+                this.duration=2;
             }
         }
     }; 
