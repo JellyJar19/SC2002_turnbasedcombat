@@ -4,8 +4,8 @@ import java.util.List;
 public class Wizard extends Player {
     private int arcaneBlastBonus;
 
-    public Wizard(String name){
-        super(name, 200, 50, 10, 20);
+    public Wizard(){
+        super("Wizard", 200, 50, 10, 20);
         this.arcaneBlastBonus = 0;
     }
 
@@ -26,6 +26,14 @@ public class Wizard extends Player {
 
     public int getArcaneBlastBonus(){
         return arcaneBlastBonus; // getter for special skill
+    }
+
+    public String getSpecialDesc() {
+        return("Arcane Blast Effect: Deal\r\n" + //
+                        "BasicAttack damage to all enemies currently\r\n" + //
+                        "in combat. Each enemy defeated by Arcane\r\n" + //
+                        "Blast adds 10 to the Wizard’s Attack, lasting\r\n" + //
+                        "until end of the level.")
     }
 
 }

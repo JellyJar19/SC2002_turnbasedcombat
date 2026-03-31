@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
     static Scanner sc = new Scanner(System.in);    
-    public static void printInterface(Playable playerChar, Item[] playerItems, Level difficultyLevel) {
+    public static void printInterface(Player playerChar, Item[] playerItems, Level difficultyLevel) {
            
         int choice;
 
@@ -14,10 +14,10 @@ public abstract class MainMenu extends UserInterface {
         while (true) {
         System.out.print("\n\nCurrent Character: " + playerChar.getName() +"\n\n");
         System.out.print("Player Attributes:\n" +
-        "HP:" + playerChar.getHP() +
+        "HP:" + playerChar.getHp() +
         "\nAtk:" + playerChar.getAttack() +
-        "\nDef:" + playerChar. getDef() +
-        "\nSpd:" + playerChar.getSpd() + "\n\n" +
+        "\nDef:" + playerChar. getDefense() +
+        "\nSpd:" + playerChar.getSpeed() + "\n\n" +
         playerChar.getSpecialDesc() + "\n");
         
 
@@ -71,7 +71,7 @@ public abstract class MainMenu extends UserInterface {
     
     }
 
-    private static Playable changeCharacters() {
+    private static Player changeCharacters() {
 
     //Asks user to select a character and returns an entity of the type the user selected
 
@@ -86,11 +86,11 @@ public abstract class MainMenu extends UserInterface {
         }
         switch(choice) {
             case 1: {
-                Playable playerChar = new Warrior();
+                Player playerChar = new Warrior();
                 return(playerChar);
             }
             default: {
-                Playable playerChar = new Wizard();
+                Player playerChar = new Wizard();
                 return(playerChar);
             }
         }
@@ -103,17 +103,17 @@ public abstract class MainMenu extends UserInterface {
         //list item details
 
         System.out.print("1. Potion\n");
-        System.out.print(Potion.getItemDesc() + "\n");
+        System.out.print(Potion.getItemDescStatic() + "\n");
         System.out.print("2. Power Stone\n");
-        System.out.print(PowerStone.getItemDesc() + "\n");
+        System.out.print(PowerStone.getItemDescStatic() + "\n");
         System.out.print("3. Smoke Bomb\n");
-        System.out.print(SmokeBomb.getItemDesc() + "\n");
+        System.out.print(SmokeBomb.getItemDescStatic() + "\n");
 
 
         //User selects item
         
-        System.out.print("You may select 2 items:\n");
-        for (int i = 0; i < 2;i++) {
+        System.out.print("You may select " + ConstantsClass.MAXITEMS +  " items:\n");
+        for (int i = 0; i < ConstantsClass.MAXITEMS;i++) {
             System.out.print("Select item " + Integer.toString(i + 1));
             choice = sc.nextInt();
             while((choice < 1) || (choice > 3)) {
@@ -135,7 +135,10 @@ public abstract class MainMenu extends UserInterface {
             }
         }
     }
-        System.out.print("You have selected [" + playerItems[0].getName() + "] and [" + playerItems[1].getName() + "]\n");
+        System.out.print("You have selected");
+        for (int i = 0; i < ConstantsClass.MAXITEMS; i++) {
+            System.out.print(" [" + playerItems[i].getName() + "]");
+        }
         return;
     
     }

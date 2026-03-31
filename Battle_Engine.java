@@ -1,25 +1,39 @@
-public abstract class Battle_Engine extends UserInterface{
+public abstract class Battle_Engine{
 
-        public static void StartBattle(Playable playerChar, Item[] playerItems, Level difficultyLevel) {
-            Battle CurrentBattle = new Battle(playerChar, playerItems, difficultyLevel);
+    public static Battle StartBattle(Player playerChar, Item[] playerItems, Level difficultyLevel) {
+        return(new Battle(playerChar, playerItems, difficultyLevel));
 
+
+    }
+
+    public void processRounds(Battle currentBattle) {
+        currentBattle.printRoundStatus();
+
+        for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i++) {
+            //each combatant gets an action
+            continue;
+            
         }
 
-        public static void TurnOrderStrategy(Entity[] roundOrder, Entity currentAllies, Entity[] currentEnemies) {
+        
+    }
+
+
+        public static void TurnOrderStrategy(Combatant[] roundOrder, Combatant currentAllies, Combatant[] currentEnemies) {
             //fill in roundOrder array
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
                 roundOrder[i] = currentEnemies[i];
             }
-            roundOrder[5] = currentAllies;
+            roundOrder[ConstantsClass.TOTALCOMBATANTS] = currentAllies;
 
 
             // bubble sort
             int swapped;
-            Entity temp;
-            for (int i = 0; i < 5; i++) {
+            Combatant temp;
+            for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
                 swapped = 0;
-                for (int j = 0; j < (5 - i); j++) {
-                    if ((roundOrder[j+1] == null) || (roundOrder[j] == null) || (roundOrder[j].getSpd() < roundOrder[j+1].getSpd())) {
+                for (int j = 0; j < (ConstantsClass.MAXENEMIES - i); j++) {
+                    if ((roundOrder[j+1] == null) || (roundOrder[j] == null) || (roundOrder[j].getSpeed() < roundOrder[j+1].getSpeed())) {
                         temp = roundOrder[j];
                         roundOrder[j] = roundOrder[j+1];
                         roundOrder[j+1] = temp;
@@ -31,9 +45,9 @@ public abstract class Battle_Engine extends UserInterface{
                 }
             }
 
-            for (int i = 0; i < 6; i ++) {
+            for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i ++) {
                 if (roundOrder[i] != null) {
-                    System.out.print(roundOrder[i].getName() + " " + roundOrder[i].getSpd());
+                    System.out.print(roundOrder[i].getName() + " " + roundOrder[i].getSpeed());
                 }
             }
 

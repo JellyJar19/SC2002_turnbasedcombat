@@ -15,5 +15,11 @@ public class PowerStone extends Item {
 
         user.setSkillCooldown(savedCooldown);
     }
+
+    public static String getItemDescStatic() {
+        return("Trigger the special skill effect once, but it does not\r\n" + //
+                        "start or change the cooldown timer. In short, free\r\n" + //
+                        "extra use of the skill.");
+    }
     
 }

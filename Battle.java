@@ -1,10 +1,11 @@
 public class Battle {
-    Combatant[] currentEnemies = new Combatant[5];
-    Combatant currentAllies;
-    Item[] currentItems = new Item[2];
-    Combatant[] roundOrder = new Combatant[6];
-    int roundNumber;
-    int backupEnemies;
+    private Combatant[] currentEnemies = new Combatant[ConstantsClass.MAXENEMIES];
+    private Combatant currentAllies;
+    private Item[] currentItems = new Item[2];
+    private Combatant[] turnOrder = new Combatant[ConstantsClass.TOTALCOMBATANTS];
+    private int roundNumber;
+    private Level currentLevel;
+
 
 
     Battle(Player playerChar, Item[] playerItems, Level difficultyLevel) {
@@ -12,7 +13,96 @@ public class Battle {
         difficultyLevel.spawnEnemies(currentEnemies);
         currentItems = playerItems;
         roundNumber = 1;
-        backupEnemies = difficultyLevel.getBackupStatus();
-        Battle_Engine.TurnOrderStrategy(roundOrder, currentAllies, currentEnemies);
+        currentLevel = difficultyLevel;
+        Battle_Engine.TurnOrderStrategy(turnOrder, currentAllies, currentEnemies);
+
+    }
+
+    
+
+
+
+    public void printRoundStatus() {
+        System.out.print("Round " + roundNumber + ": ");
+        System.out.print("Enemies: \n");
+        for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
+            if ((currentEnemies[i] != null)) {
+                System.out.println(currentEnemies[i].getName());
+                System.out.println("HP : " + currentEnemies[i].getHp());
+                if (currentEnemies[i].getHp() <= 0) {
+                    System.out.print("[DEAD]");
+                } else {
+                    System.out.println("Atk : " + currentEnemies[i].getAttack());
+                    System.out.println("Def : " + currentEnemies[i].getDefense());
+
+                    // print active debuffs????
+
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.print("Player: \n");
+        System.out.println(currentAllies.getName());
+        System.out.println("HP : " + currentAllies.getHp());
+        System.out.println("Def : " + currentAllies.getDefense());
+        
+        // print active debuffs ????
+    }
+
+    public Item[] getCurrentItems() {
+        return(currentItems);
+    }
+
+    public Combatant[] getEnemies() {
+        return(currentEnemies);
+    }
+
+    public Combatant getCurrentAllies() {
+        return(currentAllies);
+    }
+
+    public Combatant[] getTurnOrder() {
+        return(turnOrder);
+    }
+
+    private boolean isPlayerDefeated() {
+        if (currentAllies.getHp() <= 0) {
+            return(true);
+        } else {
+            return(false);
+        }
+    }
+
+    private boolean allEnemiesDefeated() {
+        for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
+            if (currentEnemies[i].getHp() > 0) {
+                return(false);
+            }
+        }
+        return(true);
+    }
+
+    public void endRound() {
+        if (isPlayerDefeated() == true) {
+
+            // Player loss
+
+        } else if (allEnemiesDefeated() == true) {
+            if (currentLevel.getBackupStatus() > 0) {
+                currentLevel.spawnBackupEnemies(currentEnemies);
+            } else {
+                
+                //Player win
+
+
+
+            }
+        } else {
+            
+            // continue game
+
+        }
+
     }
 }

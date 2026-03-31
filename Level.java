@@ -51,16 +51,25 @@ public class Level {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Goblin();
                 currentEnemies[2] = new Goblin();
+                for (int i = 3; i < ConstantsClass.MAXENEMIES; i++) {
+                    currentEnemies[i] = null;
+                }
                 break;
             }
             case "MEDIUM": {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Wolf();
+                for (int i = 2; i < ConstantsClass.MAXENEMIES; i++) {
+                    currentEnemies[i] = null;
+                }
                 break;
             }
             default: {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Goblin();
+                for (int i = 2; i < ConstantsClass.MAXENEMIES; i++) {
+                    currentEnemies[i] = null;
+                }
                 break;
             }
         }
@@ -69,18 +78,23 @@ public class Level {
 
     public void spawnBackupEnemies(Combatant[] currentEnemies) {
         switch(this.difficultyName) {
-            case "EASY": {
-                return;
-            }
             case "MEDIUM": {
                 currentEnemies[0] = new Wolf();
                 currentEnemies[1] = new Wolf();
+                for (int i = 2; i < ConstantsClass.MAXENEMIES; i++) {
+                    currentEnemies[i] = null;
+                }
+                backupEnemies = 0;
                 return;
             }
             default: {
                 currentEnemies[0] = new Goblin();
                 currentEnemies[1] = new Wolf();
                 currentEnemies[2] = new Wolf();
+                for (int i = 3; i < ConstantsClass.MAXENEMIES; i++) {
+                    currentEnemies[i] = null;
+                }
+                backupEnemies = 0;
                 return;
             }
         }   

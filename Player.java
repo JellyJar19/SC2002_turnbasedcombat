@@ -31,4 +31,6 @@ public abstract class Player extends Combatant{
         inventory.add(item); // for player to add chosen item
     }
 
+    public abstract String getSpecialDesc();
+
 }
