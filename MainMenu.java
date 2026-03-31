@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
     static Scanner sc = new Scanner(System.in);    
-    public static void printInterface(Player playerChar, Item[] playerItems, Level difficultyLevel) {
+    public static Battle printInterface(Player playerChar, Item[] playerItems, Level difficultyLevel) {
            
         int choice;
 
@@ -63,7 +63,7 @@ public abstract class MainMenu extends UserInterface {
                 break;
             }
             case 6: {
-                Battle_Engine.StartBattle(playerChar, playerItems, difficultyLevel);
+                return(Battle_Engine.StartBattle(playerChar, playerItems, difficultyLevel));
             }
         }
     }

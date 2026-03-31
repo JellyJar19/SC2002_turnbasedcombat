@@ -6,7 +6,7 @@ public abstract class Battle_Engine{
 
     }
 
-    public void processRounds(Battle currentBattle) {
+    public static void processRounds(Battle currentBattle) {
         currentBattle.printRoundStatus();
 
         for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i++) {
