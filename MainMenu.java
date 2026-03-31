@@ -18,7 +18,7 @@ public abstract class MainMenu extends UserInterface {
         "\nAtk:" + playerChar.getAttack() +
         "\nDef:" + playerChar. getDefense() +
         "\nSpd:" + playerChar.getSpeed() + "\n\n" +
-        playerChar.getSpecialDesc() + "\n");
+        playerChar.getSpecialDesc() + "\n\n");
         
 
         //List options player can do
@@ -114,7 +114,7 @@ public abstract class MainMenu extends UserInterface {
         
         System.out.print("You may select " + ConstantsClass.MAXITEMS +  " items:\n");
         for (int i = 0; i < ConstantsClass.MAXITEMS;i++) {
-            System.out.print("Select item " + Integer.toString(i + 1));
+            System.out.print("Select item " + Integer.toString(i + 1) + ": ");
             choice = sc.nextInt();
             while((choice < 1) || (choice > 3)) {
                 System.out.print("Invalid input, please enter a number between 1 and 3.\n");
