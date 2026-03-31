@@ -45,7 +45,7 @@ public class Level {
         }
     } 
 
-    public void spawnEnemies(Entity[] currentEnemies) {
+    public void spawnEnemies(Combatant[] currentEnemies) {
         switch(this.difficultyName) {
             case "EASY": {
                 currentEnemies[0] = new Goblin();
@@ -67,7 +67,7 @@ public class Level {
         return;
     }
 
-    public void spawnBackupEnemies(Entity[] currentEnemies) {
+    public void spawnBackupEnemies(Combatant[] currentEnemies) {
         switch(this.difficultyName) {
             case "EASY": {
                 return;

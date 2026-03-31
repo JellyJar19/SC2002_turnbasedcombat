@@ -1,13 +1,13 @@
 public class Battle {
-    Entity[] currentEnemies = new Entity[5];
-    Entity currentAllies;
+    Combatant[] currentEnemies = new Combatant[5];
+    Combatant currentAllies;
     Item[] currentItems = new Item[2];
-    Entity[] roundOrder = new Entity[6];
+    Combatant[] roundOrder = new Combatant[6];
     int roundNumber;
     int backupEnemies;
 
 
-    Battle(Playable playerChar, Item[] playerItems, Level difficultyLevel) {
+    Battle(Player playerChar, Item[] playerItems, Level difficultyLevel) {
         currentAllies = playerChar;
         difficultyLevel.spawnEnemies(currentEnemies);
         currentItems = playerItems;
