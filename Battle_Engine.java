@@ -14,7 +14,7 @@ public abstract class Battle_Engine{
             continue;
             
         }
-
+        endRound(currentBattle);
         
     }
 
@@ -56,7 +56,7 @@ public abstract class Battle_Engine{
         }
         
 
-    public void endRound(Battle CurrentBattle) {
+    private static void endRound(Battle CurrentBattle) {
         if (CurrentBattle.isPlayerDefeated() == true) {
 
             // Player loss
