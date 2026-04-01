@@ -78,7 +78,7 @@ public abstract class Combatant {
         }
     }
 
-    public abstract List<Action> getAvailableActions();
+    public abstract List<Actions> getAvailableActions();
     
     // getters in case we need
     public String getName() { 

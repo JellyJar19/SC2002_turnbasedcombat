@@ -9,10 +9,10 @@ public class Wizard extends Player {
         this.arcaneBlastBonus = 0;
     }
 
-    public List<Action> getAvailActions(){
+    public List<Actions> getAvailableActions(){
         // waiting for the class to be made
-        List<Action> action = super.getAvailableAction(); 
-        action.add(new ArcaneBlastAction()); // add wizard special skill
+        List<Actions> action = super.getAvailableActions(); 
+        action.add((Actions) new ArcaneBlastAction()); // add wizard special skill
         return action;
     }
 
