@@ -66,7 +66,10 @@ public class Battle {
         return(turnOrder);
     }
 
-    private boolean isPlayerDefeated() {
+    public Level getLevel() {
+        return(currentLevel);
+    }
+    public boolean isPlayerDefeated() {
         if (currentAllies.getHp() <= 0) {
             return(true);
         } else {
@@ -74,7 +77,7 @@ public class Battle {
         }
     }
 
-    private boolean allEnemiesDefeated() {
+    public boolean allEnemiesDefeated() {
         for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
             if (currentEnemies[i].getHp() > 0) {
                 return(false);
@@ -83,26 +86,4 @@ public class Battle {
         return(true);
     }
 
-    public void endRound() {
-        if (isPlayerDefeated() == true) {
-
-            // Player loss
-
-        } else if (allEnemiesDefeated() == true) {
-            if (currentLevel.getBackupStatus() > 0) {
-                currentLevel.spawnBackupEnemies(currentEnemies);
-            } else {
-                
-                //Player win
-
-
-
-            }
-        } else {
-            
-            // continue game
-
-        }
-
-    }
 }

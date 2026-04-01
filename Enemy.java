@@ -9,13 +9,13 @@ public abstract class Enemy extends Combatant {
         this.strategy = strategy;
     }
 
-    public Action chooseAction(Battle battle){
+    public Actions chooseAction(Battle battle){
         return strategy.chooseAction(this, battle); // pass enemy and battle state
     }
 
-    public List<Action> getAvailableAction(){
-        List<Action> action = new ArrayList<>();
-        action.add(new BasicAttackAction()); // enemy only have basic attack
+    public List<Actions> getAvailableAction(){
+        List<Actions> action = new ArrayList<>();
+        action.add((Actions) new BasicAttackAction()); // enemy only have basic attack
         return action;
     }
 }

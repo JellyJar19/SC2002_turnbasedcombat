@@ -24,7 +24,7 @@ public abstract class Battle_Engine{
             for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
                 roundOrder[i] = currentEnemies[i];
             }
-            roundOrder[ConstantsClass.TOTALCOMBATANTS] = currentAllies;
+            roundOrder[ConstantsClass.TOTALCOMBATANTS - 1] = currentAllies;
 
 
             // bubble sort
@@ -47,11 +47,36 @@ public abstract class Battle_Engine{
 
             for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i ++) {
                 if (roundOrder[i] != null) {
-                    System.out.print(roundOrder[i].getName() + " " + roundOrder[i].getSpeed());
+                    System.out.println();
+                    System.out.println("!!!!remove later? !!!");
+                    System.out.print("Turn of orders : " + roundOrder[i].getName() + " " + roundOrder[i].getSpeed() + ", ");
                 }
             }
 
         }
         
-        
-}
+
+    public void endRound(Battle CurrentBattle) {
+        if (CurrentBattle.isPlayerDefeated() == true) {
+
+            // Player loss
+
+        } else if (CurrentBattle.allEnemiesDefeated() == true) {
+            if (CurrentBattle.getLevel().getBackupStatus() > 0) {
+                CurrentBattle.getLevel().spawnBackupEnemies(CurrentBattle.getEnemies());
+            } else {
+                
+                //Player win
+
+
+
+            }
+        } else {
+            
+            // continue game
+
+        }
+
+    }
+} 
+
