@@ -197,11 +197,18 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("1. EASY\n");
         System.out.print("2. MEDIUM\n");
         System.out.print("3. HARD\n");
-        choice = sc.nextInt();
-
-        while((choice < 1) || (choice > 3)) {
-            System.out.print("Invalid input, please enter a number between 1 and 3.\n");
-            choice = sc.nextInt();
+        while(true){
+            try{
+                choice = sc.nextInt();
+                if (choice>=1 && choice<=3)
+                    break;
+                else
+                    System.out.println("Enter a number between 1 and 3 only!");
+            }
+            catch(InputMismatchException e){
+                sc.next(); //clear the error line
+                System.out.println("Enter integers only!");
+            }
         }
 
         difficultyLevel.setDifficulty(choice);
