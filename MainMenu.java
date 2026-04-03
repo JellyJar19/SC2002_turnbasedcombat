@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
@@ -36,11 +37,28 @@ public abstract class MainMenu extends UserInterface {
         // Ask player to select an option
 
         System.out.print("Please select an option: \n");
+
+        while(true){
+            try{
+                choice = sc.nextInt();
+                if (choice>=1 && choice<=6)
+                    break;
+                else
+                    System.out.println("Enter a number between 1 and 6 only!");
+            }
+            catch(InputMismatchException e){
+                sc.next(); //clear the error line
+                System.out.println("Enter integers only!");
+            }
+        }
+
+        /* 
         choice = sc.nextInt();
         while ((choice < 1) || (choice > 6)) {
             System.out.println("Invalid Input. Please enter a number between 1 and 6.\n");
             choice = sc.nextInt();
         }
+        */
         switch(choice) {
             case 1: {
                 playerChar = changeCharacters();
