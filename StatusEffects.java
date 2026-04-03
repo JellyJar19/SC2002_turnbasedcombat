@@ -40,9 +40,7 @@ public enum StatusEffects {
         }
 
         public void endTurn(Combatant target){
-            if (target.defense>this.OGDefense){
-                target.defense=this.OGDefense; //only assign back original value if less then 10 defense points were used
-            }
+            target.defense=this.OGDefense;
             //else target.defense should be left at the score it is with
             this.OGDefense=0; //reset values
             if (this.duration==0){
