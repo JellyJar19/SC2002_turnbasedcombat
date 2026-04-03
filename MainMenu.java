@@ -97,11 +97,25 @@ public abstract class MainMenu extends UserInterface {
         System.out.println("\n\n\n\n\nSelect a character:\n");
         System.out.print("1. Warrior\n");
         System.out.print("2. Wizard\n");
+        while(true){
+            try{
+                choice = sc.nextInt();
+                if (choice>=1 && choice<=2)
+                    break;
+                else
+                    System.out.println("Enter a number between 1 and 2 only!");
+            }
+            catch(InputMismatchException e){
+                sc.next(); //clear the error line
+                System.out.println("Enter integers only!");
+            }
+        /* 
         choice = sc.nextInt();
         while((choice < 1) || (choice > 2)) {
             System.out.print("Invalid input, please enter 1 or 2.\n");
             choice = sc.nextInt();
         }
+        */
         switch(choice) {
             case 1: {
                 Player playerChar = new Warrior();
@@ -133,14 +147,13 @@ public abstract class MainMenu extends UserInterface {
         System.out.print("You may select " + ConstantsClass.MAXITEMS +  " items:\n");
         for (int i = 0; i < ConstantsClass.MAXITEMS;i++) {
             System.out.print("Select item " + Integer.toString(i + 1) + ": ");
-            choice = sc.nextInt();
             while(true){
             try{
                 choice = sc.nextInt();
-                if (choice>=1 && choice<=2)
+                if (choice>=1 && choice<=3)
                     break;
                 else
-                    System.out.println("Enter a number between 1 and 2 only!");
+                    System.out.println("Enter a number between 1 and 3 only!");
             }
             catch(InputMismatchException e){
                 sc.next(); //clear the error line
