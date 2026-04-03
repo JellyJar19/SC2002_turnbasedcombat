@@ -134,10 +134,25 @@ public abstract class MainMenu extends UserInterface {
         for (int i = 0; i < ConstantsClass.MAXITEMS;i++) {
             System.out.print("Select item " + Integer.toString(i + 1) + ": ");
             choice = sc.nextInt();
+            while(true){
+            try{
+                choice = sc.nextInt();
+                if (choice>=1 && choice<=2)
+                    break;
+                else
+                    System.out.println("Enter a number between 1 and 2 only!");
+            }
+            catch(InputMismatchException e){
+                sc.next(); //clear the error line
+                System.out.println("Enter integers only!");
+            }
+        }
+            /* 
             while((choice < 1) || (choice > 3)) {
                 System.out.print("Invalid input, please enter a number between 1 and 3.\n");
                 choice = sc.nextInt();
             }
+            */
         switch(choice) {
             case 1: {
                 playerItems[i] = new Potion();
