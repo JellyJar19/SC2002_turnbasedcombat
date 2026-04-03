@@ -109,6 +109,7 @@ public abstract class MainMenu extends UserInterface {
                 sc.next(); //clear the error line
                 System.out.println("Enter integers only!");
             }
+        }
         /* 
         choice = sc.nextInt();
         while((choice < 1) || (choice > 2)) {
