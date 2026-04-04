@@ -20,7 +20,16 @@ public class Battle {
     }
 
     
+    public void rounds(){
 
+        boolean continueGame=true;
+        
+        while(continueGame){
+            this.printRoundStatus();
+            Battle_Engine.processRounds(this); //processRounds returns true or false
+        }
+
+    }
 
 
     public void printRoundStatus() {

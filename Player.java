@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public abstract class Player extends Combatant{
     protected List<Item> inventory;
 
