@@ -25,11 +25,8 @@ public abstract class Battle_Engine{
         
     }
 
-<<<<<<< HEAD
 
-=======
     //return Combatant[]
->>>>>>> test
     public static void TurnOrderStrategy(Combatant[] roundOrder, Combatant currentAllies, Combatant[] currentEnemies) {
         //fill in roundOrder array
         for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
