@@ -73,14 +73,18 @@ public abstract class MainMenu extends UserInterface {
                 break;
             }
             case 4: {
-
+                showDifficultyDetails();
                 break;
             }
             case 5: {
-
+                showEnemyDetails();
                 break;
             }
             case 6: {
+                if (playerItems[0] == null) {
+                    System.out.println("\nYou have not selected your items yet. Please select your items!\n");
+                    break;
+                }
                 return(Battle_Engine.StartBattle(playerChar, playerItems, difficultyLevel));
             }
         }
@@ -215,7 +219,33 @@ public abstract class MainMenu extends UserInterface {
         return; 
         }
 
+    
+
+    private static void showDifficultyDetails() {
+        System.out.println("Easy:");
+        System.out.println("Wave 1: 3 Goblins\n");
+        System.out.println("Medium:");
+        System.out.println("Wave 1: 1 Goblin, 1 Wolf");
+        System.out.println("Wave 2: 2 Wolves\n");
+        System.out.println("Hard:");
+        System.out.println("Wave 1: 2 Goblins");
+        System.out.println("Wave 2: 1 Goblin, 2 Wolves");
     }
 
+    private static void showEnemyDetails() {
+        Combatant tempEnemy = new Goblin();
+        System.out.println("Goblin: ");
+        System.out.println("Hp: " + tempEnemy.getHp());
+        System.out.println("Attack: " + tempEnemy.getAttack());
+        System.out.println("Defense: " + tempEnemy.getDefense());
+        System.out.println("Speed: " + tempEnemy.getSpeed() + "\n");
+        tempEnemy = new Wolf();
+        System.out.println("Wolf: ");
+        System.out.println("Hp: " + tempEnemy.getHp());
+        System.out.println("Attack: " + tempEnemy.getAttack());
+        System.out.println("Defense: " + tempEnemy.getDefense());
+        System.out.println("Speed: " + tempEnemy.getSpeed() + "\n");
+        
+    }
 
-
+}
