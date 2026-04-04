@@ -1,3 +1,4 @@
+
 public class Battle {
     private Combatant[] currentEnemies = new Combatant[ConstantsClass.MAXENEMIES];
     private Combatant currentAllies;
@@ -78,6 +79,9 @@ public class Battle {
     }
 
     public boolean allEnemiesDefeated() {
+
+
+
         for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
             if (currentEnemies[i].getHp() > 0) {
                 return(false);

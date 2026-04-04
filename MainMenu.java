@@ -212,7 +212,7 @@ public abstract class MainMenu extends UserInterface {
         }
 
         difficultyLevel.setDifficulty(choice);
-        return;
+        return; 
         }
 
     }
