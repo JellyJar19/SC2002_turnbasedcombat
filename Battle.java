@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 
 public class Battle {
     private Combatant[] currentEnemies = new Combatant[ConstantsClass.MAXENEMIES];
     private Combatant currentAllies;
-    private Item[] currentItems = new Item[2];
+    private Item[] currentItems = new Item[ConstantsClass.MAXITEMS];
     private Combatant[] turnOrder = new Combatant[ConstantsClass.TOTALCOMBATANTS];
     private int roundNumber;
     private Level currentLevel;

@@ -7,10 +7,9 @@ public abstract class Battle_Engine{
     }
 
     public static boolean processRounds(Battle currentBattle) {
-        //Combatant turnOrder[] = this.TurnOrderStrategy(roundOrder,currentAllies,currentEnemies);
         /*
-        
-        for (Combatant combatant : turnOrder){
+        Combatant turnOrder[] = currentBattle.getTurnOrder()
+        for (Combatant combatant : roundOrder){
             //iterate through the combatant 
         }
 
@@ -26,7 +25,7 @@ public abstract class Battle_Engine{
     }
 
 
-    //return Combatant[]
+    //roundOrder is passed by reference, will update it
     public static void TurnOrderStrategy(Combatant[] roundOrder, Combatant currentAllies, Combatant[] currentEnemies) {
         //fill in roundOrder array
         for (int i = 0; i < ConstantsClass.MAXENEMIES; i++) {
