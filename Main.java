@@ -11,7 +11,11 @@ public class Main {
         
 
         Battle currentBattle = MainMenu.printInterface(playerChar, playerItems, difficultyLevel);  // Pass playerChar and playerItems as references so changes can be made to them in menu.
-        Battle_Engine.processRounds(currentBattle);
+        //loop to this until while loop becomes false
+        while(Battle_Engine.processRounds(currentBattle)){
+            System.out.println("test!");
+        }
+    
         //ending screen
 
     }
