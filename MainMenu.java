@@ -2,12 +2,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class MainMenu extends UserInterface {
-    static Scanner sc = new Scanner(System.in);    
-    public static Battle printInterface(Player playerChar, Item[] playerItems, Level difficultyLevel) {
+    private static Scanner sc = new Scanner(System.in);    
+    private static Player playerChar;
+    private static Item[] playerItems;
+    private static Level difficultyLevel;
+    public static Battle printInterface(Player playerCharInput, Item[] playerItemsInput, Level difficultyLevelInput) {
            
         int choice;
-
-
+        playerChar = playerCharInput;
+        playerItems = playerItemsInput;
+        difficultyLevel = difficultyLevelInput;
         //List current player details
 
         System.out.print("- GAME START -\n\n");
@@ -61,11 +65,11 @@ public abstract class MainMenu extends UserInterface {
         */
         switch(choice) {
             case 1: {
-                playerChar = changeCharacters();
+                changeCharacters();
                 break;
             }
             case 2: {
-                selectItems(playerItems);
+                selectItems();
                 break;
             }
             case 3: {
@@ -93,7 +97,7 @@ public abstract class MainMenu extends UserInterface {
     
     }
 
-    private static Player changeCharacters() {
+    private static void changeCharacters() {
 
     //Asks user to select a character and returns an entity of the type the user selected
 
@@ -123,18 +127,16 @@ public abstract class MainMenu extends UserInterface {
         */
         switch(choice) {
             case 1: {
-                Player playerChar = new Warrior();
-                return(playerChar);
+                playerChar = new Warrior();
             }
             default: {
-                Player playerChar = new Wizard();
-                return(playerChar);
+                playerChar = new Wizard();
             }
         }
     }
 
 
-    private static void selectItems(Item[] playerItems) {
+    private static void selectItems() {
         int choice;
         
         //list item details
