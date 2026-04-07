@@ -7,19 +7,22 @@ public abstract class Battle_Engine{
     }
 
     public static boolean processRounds(Battle currentBattle) {
-        /*
-        Combatant turnOrder[] = currentBattle.getTurnOrder()
-        for (Combatant combatant : roundOrder){
+        
+        Combatant turnOrder[] = currentBattle.getTurnOrder();
+        for (Combatant combatant : turnOrder){
             //iterate through the combatant 
+            
         }
 
-        */
+        
+       /* 
         for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i++) {
             //each combatant gets an action
 
             continue;
             
         }
+         */
         return endRound(currentBattle);
         
     }

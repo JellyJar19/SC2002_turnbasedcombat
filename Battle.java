@@ -16,7 +16,7 @@ public class Battle {
         currentItems = playerItems;
         roundNumber = 1;
         currentLevel = difficultyLevel;
-        Battle_Engine.TurnOrderStrategy(turnOrder, currentAllies, currentEnemies);
+        Battle_Engine.TurnOrderStrategy(this.turnOrder, this.currentAllies, this.currentEnemies); //pass by reference
 
     }
 
