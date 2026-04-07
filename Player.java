@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player extends Combatant{
-    protected List<Item> inventory;
+    //protected List<Item> inventory; //belongs to the battle class, not player
 
     public Player(String name, int hp, int attack, int defense, int speed) {
         super(name, hp, attack, defense, speed); //take from combatant
-        this.inventory = new ArrayList<>();
+        //this.inventory = new ArrayList<>();
     }
     
     // waiting for the class to be made
+    /* 
     public List<Actions> getAvailableActions(){
         List<Actions> action = new ArrayList<>();
         action.add((Actions) new BasicAttackAction());
@@ -20,6 +21,7 @@ public abstract class Player extends Combatant{
         }
         return action; // avail action list is attack + defend + items avail
     }
+    */
 
     public List<Item> getInventory(){
         return inventory; // getter for inventory

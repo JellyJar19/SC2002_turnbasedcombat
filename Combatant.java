@@ -24,7 +24,7 @@ public abstract class Combatant {
         this.speed = speed;
         this.stun=false;
         this.statusEffects = new ArrayList<StatusEffects>();
-        //this.status = null;
+        this.statusEffects.add(StatusEffects.StunEffect);
         this.skillCooldown = 0;
     }
 
@@ -45,7 +45,6 @@ public abstract class Combatant {
         }
     }
 
-    // this one need see how keane does it
     public void addStatusEffect(StatusEffects effect) {
         statusEffects.add(effect);
         effect.onApply(this);
@@ -112,5 +111,7 @@ public abstract class Combatant {
     public void setStun(boolean stun){
         this.stun=stun;
     }
+
+    //setter method
 
 }
