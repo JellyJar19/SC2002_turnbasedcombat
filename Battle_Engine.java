@@ -9,11 +9,15 @@ public abstract class Battle_Engine{
     public static boolean processRounds(Battle currentBattle) {
         
         Combatant turnOrder[] = currentBattle.getTurnOrder();
+        //1 loop is 1 turn
         for (Combatant combatant : turnOrder){
             //iterate through the combatant 
-            
-        }
+            for (StatusEffects effect : combatant.statusEffects){
+                effect.startTurn(combatant);
+            }
 
+        }
+        //round finished
         
        /* 
         for (int i = 0; i < ConstantsClass.TOTALCOMBATANTS; i++) {
@@ -22,7 +26,7 @@ public abstract class Battle_Engine{
             continue;
             
         }
-         */
+        */
         return endRound(currentBattle);
         
     }
