@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import statusEffects.*;
+
 
 public class Warrior extends Player {
 
@@ -15,7 +17,7 @@ public class Warrior extends Player {
         return action;
     }
 
-    private void addStatusEffect(){
+    private void addStatusEffect(){ //private because this does not need to be accessible outside
         statusEffects.add(new SmokeBombEffect());
     }
 

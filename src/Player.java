@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import statusEffects.*;
+
 public abstract class Player extends Combatant{
     //protected List<Item> inventory; //belongs to the battle class, not player
 
@@ -23,7 +25,7 @@ public abstract class Player extends Combatant{
         return action; // avail action list is attack + defend + items avail
     }
     */
-    private void addStatusEffect(){
+    private void addStatusEffect(){ //private because this does not need to be accessible outside
         statusEffects.add(new DefendBuff());
     }
 

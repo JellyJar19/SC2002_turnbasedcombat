@@ -1,3 +1,5 @@
+import statusEffects.*;
+
 public abstract class Battle_Engine{
 
     public static Battle StartBattle(Player playerChar, Item[] playerItems, Level difficultyLevel) {

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import statusEffects.*;
 
 public abstract class Enemy extends Combatant {
     protected EnemyActionStrategy strategy; // waiting for the class to be made
@@ -14,7 +15,7 @@ public abstract class Enemy extends Combatant {
         return strategy.chooseAction(this, battle); // pass enemy and battle state
     }
 
-    private void addStatusEffect(){
+    private void addStatusEffect(){ //private because this does not need to be accessible outside
         statusEffects.add(new StunEffect());
     }
 

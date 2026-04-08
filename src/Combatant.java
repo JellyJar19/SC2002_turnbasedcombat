@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+import statusEffects.*;
 public abstract class Combatant {
 
     protected String name;
@@ -44,8 +44,6 @@ public abstract class Combatant {
             this.hp = this.hp + amount;
         }
     }
-
-    private void addStatusEffect(){}
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects

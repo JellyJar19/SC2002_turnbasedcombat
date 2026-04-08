@@ -2,8 +2,8 @@ package statusEffects;
 
 public abstract class StatusEffects {
 
-    protected int duration;
-    protected boolean active;
+    private int duration;
+    private boolean active;
 
     public abstract void onApply(Combatant target);
     public abstract void startTurn(Combatant target);
