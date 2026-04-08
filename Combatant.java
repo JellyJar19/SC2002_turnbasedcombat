@@ -45,10 +45,7 @@ public abstract class Combatant {
         }
     }
 
-    public void addStatusEffect(StatusEffects effect) {
-        statusEffects.add(effect);
-        effect.onApply(this);
-    }
+    public abstract void addStatusEffect(StatusEffects effect);
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects

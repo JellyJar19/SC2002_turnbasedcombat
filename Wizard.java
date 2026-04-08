@@ -16,6 +16,11 @@ public class Wizard extends Player {
         action.add((Actions) new ArcaneBlastAction()); // add wizard special skill
         return action;
     }
+    @Override
+    public void addStatusEffect(){
+        super.addStatusEffect();
+        statusEffects.add(new ArcaneEffect());
+    }
 
     public void increaseAttackBonus(int value){
         arcaneBlastBonus += value; // when special skill used, +10 to wizard attack
