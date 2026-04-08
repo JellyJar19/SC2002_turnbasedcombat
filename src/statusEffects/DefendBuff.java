@@ -1,10 +1,12 @@
-public class StunEffect extends StatusEffects {
+package statusEffects;
+
+public class DefendBuff extends StatusEffects {
 
     @Override
     public void onApply(Combatant target) {
         this.active = true;
         this.duration = 2;
-        target.setStun(true);
+        target.defense += 10;
     }
 
     @Override
@@ -18,7 +20,7 @@ public class StunEffect extends StatusEffects {
     public void endTurn(Combatant target) {
         if (this.duration == 0) {
             this.active = false;
-            target.setStun(false);
+            target.defense -= 10;
         }
     }
 }

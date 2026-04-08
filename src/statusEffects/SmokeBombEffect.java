@@ -1,10 +1,11 @@
-public class DefendBuff extends StatusEffects {
+package statusEffects;
+
+public class SmokeBombEffect extends StatusEffects {
 
     @Override
     public void onApply(Combatant target) {
         this.active = true;
         this.duration = 2;
-        target.defense += 10;
     }
 
     @Override
@@ -18,7 +19,6 @@ public class DefendBuff extends StatusEffects {
     public void endTurn(Combatant target) {
         if (this.duration == 0) {
             this.active = false;
-            target.defense -= 10;
         }
     }
 }

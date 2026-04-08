@@ -1,9 +1,12 @@
-public class SmokeBombEffect extends StatusEffects {
+package statusEffects;
+
+public class StunEffect extends StatusEffects {
 
     @Override
     public void onApply(Combatant target) {
         this.active = true;
         this.duration = 2;
+        target.setStun(true);
     }
 
     @Override
@@ -17,6 +20,7 @@ public class SmokeBombEffect extends StatusEffects {
     public void endTurn(Combatant target) {
         if (this.duration == 0) {
             this.active = false;
+            target.setStun(false);
         }
     }
 }

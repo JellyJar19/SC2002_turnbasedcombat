@@ -1,3 +1,5 @@
+package statusEffects;
+
 public class ArcaneEffect extends StatusEffects {
 
     @Override
