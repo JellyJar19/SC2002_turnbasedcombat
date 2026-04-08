@@ -1,0 +1,22 @@
+public class SmokeBombEffect extends StatusEffects {
+
+    @Override
+    public void onApply(Combatant target) {
+        this.active = true;
+        this.duration = 2;
+    }
+
+    @Override
+    public void startTurn(Combatant target) {
+        if (this.active) {
+            this.duration--;
+        }
+    }
+
+    @Override
+    public void endTurn(Combatant target) {
+        if (this.duration == 0) {
+            this.active = false;
+        }
+    }
+}
