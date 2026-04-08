@@ -14,6 +14,12 @@ public class Warrior extends Player {
         return action;
     }
 
+    @Override
+    public void addStatusEffect(){
+        super.addStatusEffect();
+        statusEffects.add(new );
+    }
+
     public String getSpecialDesc() {
         return("Shield Bash Effect: Deal\r\n" + //
                         "BasicAttack damage to selected enemy.\r\n" + //

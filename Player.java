@@ -22,8 +22,11 @@ public abstract class Player extends Combatant{
         return action; // avail action list is attack + defend + items avail
     }
     */
-
-    public abstract void addStatusEffect();
+    @Override
+    public void addStatusEffect(){
+        statusEffects.add(new DefendBuff());
+        statusEffects.add(new SmokeBombEffect());
+    }
 
     public List<Item> getInventory(){
         return inventory; // getter for inventory
