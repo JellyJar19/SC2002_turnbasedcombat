@@ -13,6 +13,11 @@ public abstract class Enemy extends Combatant {
         return strategy.chooseAction(this, battle); // pass enemy and battle state
     }
 
+    @Override
+    public void addStatusEffect(){
+        statusEffects.add(new StunEffect());
+    }
+
     public List<Actions> getAvailableAction(){
         List<Actions> action = new ArrayList<>();
         action.add((Actions) new BasicAttackAction()); // enemy only have basic attack

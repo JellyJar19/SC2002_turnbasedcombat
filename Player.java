@@ -23,10 +23,7 @@ public abstract class Player extends Combatant{
     }
     */
 
-    
-    public void addStatusEffect(){
-        statusEffects.add(new StunEffect());
-    }
+    public abstract void addStatusEffect();
 
     public List<Item> getInventory(){
         return inventory; // getter for inventory
