@@ -23,9 +23,9 @@ public abstract class Combatant {
         this.defense = defense;
         this.speed = speed;
         this.stun=false;
-        this.statusEffects = new ArrayList<StatusEffects>();
-        this.statusEffects.add(StatusEffects.StunEffect);
+        this.statusEffects = new ArrayList<StatusEffects>(); //instantiate a ArrayList object here to avoid null pointer exception
         this.skillCooldown = 0;
+
     }
 
     public void takeDamage(int amount) {
@@ -45,7 +45,7 @@ public abstract class Combatant {
         }
     }
 
-    public abstract void addStatusEffect();
+    private void addStatusEffect(){}
 
     // this one need see how keane does it
     public void applyStatusEffects() { //iterate through the list and minus off the status effects

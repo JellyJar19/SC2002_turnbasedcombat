@@ -6,6 +6,7 @@ public class Warrior extends Player {
 
     public Warrior(){
         super("Warrior", 260, 40, 20, 30);
+        addStatusEffect();
     }
 
     public List<Actions> getAvailableActions() {
@@ -14,10 +15,8 @@ public class Warrior extends Player {
         return action;
     }
 
-    @Override
-    public void addStatusEffect(){
-        super.addStatusEffect();
-        statusEffects.add(new );
+    private void addStatusEffect(){
+        statusEffects.add(new SmokeBombEffect());
     }
 
     public String getSpecialDesc() {

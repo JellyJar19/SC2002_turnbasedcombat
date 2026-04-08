@@ -7,14 +7,14 @@ public abstract class Enemy extends Combatant {
     public Enemy(String name, int hp, int attack, int defense, int speed, EnemyActionStrategy strategy){
         super(name, hp, attack, defense, speed); //take from combatant;
         this.strategy = strategy;
+        addStatusEffect();
     }
 
     public Actions chooseAction(Battle battle){
         return strategy.chooseAction(this, battle); // pass enemy and battle state
     }
 
-    @Override
-    public void addStatusEffect(){
+    private void addStatusEffect(){
         statusEffects.add(new StunEffect());
     }
 

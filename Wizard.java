@@ -7,6 +7,7 @@ public class Wizard extends Player {
     //wizard
     public Wizard(){
         super("Wizard", 200, 50, 10, 20);
+        addStatusEffect();
         this.arcaneBlastBonus = 0;
     }
 
@@ -16,9 +17,7 @@ public class Wizard extends Player {
         action.add((Actions) new ArcaneBlastAction()); // add wizard special skill
         return action;
     }
-    @Override
-    public void addStatusEffect(){
-        super.addStatusEffect();
+    private void addStatusEffect(){
         statusEffects.add(new ArcaneEffect());
     }
 

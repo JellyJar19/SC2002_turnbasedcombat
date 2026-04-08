@@ -7,6 +7,7 @@ public abstract class Player extends Combatant{
     public Player(String name, int hp, int attack, int defense, int speed) {
         super(name, hp, attack, defense, speed); //take from combatant
         //this.inventory = new ArrayList<>();
+        addStatusEffect();
     }
     
     // waiting for the class to be made
@@ -22,10 +23,8 @@ public abstract class Player extends Combatant{
         return action; // avail action list is attack + defend + items avail
     }
     */
-    @Override
-    public void addStatusEffect(){
+    private void addStatusEffect(){
         statusEffects.add(new DefendBuff());
-        statusEffects.add(new SmokeBombEffect());
     }
 
     public List<Item> getInventory(){
