@@ -1,9 +1,12 @@
-public abstract class StatusEffects implements StatusEffectMethods {
+public abstract class StatusEffects {
 
     protected int duration;
     protected boolean active;
 
-    @Override
+    public abstract void onApply(Combatant target);
+    public abstract void startTurn(Combatant target);
+    public abstract void endTurn(Combatant target);
+
     public boolean isActive() {
         return active;
     }
