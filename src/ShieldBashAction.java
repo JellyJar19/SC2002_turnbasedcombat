@@ -1,3 +1,5 @@
+import statusEffects.*;
+
 public class ShieldBashAction extends SpecialSkillAction{
     @Override
     public void execute(Combatant activechar, Battle battle, Combatant target){
@@ -7,7 +9,8 @@ public class ShieldBashAction extends SpecialSkillAction{
                 System.out.println(activechar.getName() + " used " + this.getName() + " on " + target.getName());
                 BasicAttackAction BasicAttack = new BasicAttackAction();
                 BasicAttack.execute(activechar, battle, target); // deal basic attack damage to target
-                target.addStatusEffect(StunEffect);
+                statusEffects targetStun = new StunEffect;
+                targetStun.onApply(target);
             }
             else{
                 System.out.println("Shield Bash on Cooldown " + x + " turns remaining. ");
