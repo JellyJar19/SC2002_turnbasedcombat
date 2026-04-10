@@ -1,8 +1,8 @@
 package items;
-
 import statusEffects.*;
-
-package items;
+import entities.*;
+import entities.enemy.*;
+import entities.player.*;
 public class PowerStone extends Item {
     public PowerStone(){
         super("PowerStone");

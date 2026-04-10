@@ -1,10 +1,4 @@
 package items;
-
-import Battle;
-import Combatant;
-import Player;
-
-package items;
 public abstract class Item {
     protected String name;
 

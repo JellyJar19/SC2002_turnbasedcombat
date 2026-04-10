@@ -1,10 +1,4 @@
 package items;
-
-import Battle;
-import Combatant;
-import Player;
-
-package items;
 public class Potion extends Item {
     private int healAmount;
 
