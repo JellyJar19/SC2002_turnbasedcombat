@@ -1,3 +1,5 @@
+package actions;
+
 public class BasicAttackAction implements Actions {
     public void execute(Combatant activechar, Battle battle, Combatant target){
         int atk = activechar.getAttack();

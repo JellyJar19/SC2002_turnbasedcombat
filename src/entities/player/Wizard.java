@@ -1,7 +1,9 @@
+package entities.player;
 import java.util.ArrayList;
 import java.util.List;
 
 import statusEffects.*;
+import entities.*;
 
 public class Wizard extends Player {
     private int arcaneBlastBonus;

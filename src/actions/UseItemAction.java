@@ -1,4 +1,7 @@
-public class UseItemAction implements Action{
+package actions;
+import items.*;
+import entities.*;
+public class UseItemAction implements Actions{
     private Item item;
 
     UseItemAction(Item item){

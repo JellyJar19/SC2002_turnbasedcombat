@@ -1,4 +1,7 @@
-public abstract class SpecialSkillAction implements Action{
+package actions;
+import items.*;
+import entities.*;
+public abstract class SpecialSkillAction implements Actions{
     public void execute(Combatant activechar, Battle battle, Combatant target){};
     public boolean isOffCooldown(Combatant activechar){
         if (activechar.skillcooldown > 0){

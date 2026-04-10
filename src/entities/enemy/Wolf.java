@@ -1,4 +1,7 @@
+package entities.enemy;
 import java.util.List;
+
+import entities.*;
 
 public class Wolf extends Enemy {
     public Wolf(){

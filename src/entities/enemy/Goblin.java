@@ -1,4 +1,7 @@
+package entities.enemy;
 import java.util.List;
+
+import entities.*;
 
 public class Goblin extends Enemy {
     public Goblin(){

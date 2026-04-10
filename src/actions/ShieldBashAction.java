@@ -1,9 +1,14 @@
+package actions;
 import statusEffects.*;
+import items.*;
+import entities.*;
+import entities.player.*;
+import entities.enemy.*;
 
 public class ShieldBashAction extends SpecialSkillAction{
     @Override
-    public void execute(Combatant activechar, Battle battle, Combatant target){
-        if (activechar instanceof Warrior){
+    public <T> void execute(T activechar, Battle battle, Combatant target){
+        if (activechar.){
             Warrior activechar = (Warrior) activechar;
             if (this.isOffCooldown(activechar)){
                 System.out.println(activechar.getName() + " used " + this.getName() + " on " + target.getName());
