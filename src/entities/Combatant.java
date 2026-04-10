@@ -12,21 +12,20 @@ public abstract class Combatant {
     private int attack;
     private int defense;
     private int speed;
-    private boolean stun; //decides whether combatant is able to make actions for that round
-    private ArrayList<StatusEffects> statusEffects; //store the status effects that can be applied, program will check if it is active or not  
+    private boolean stun;
     private int skillCooldown;
+    private List<StatusEffects> statusEffects; 
 
-    //constructor
     public Combatant(String name, int hp, int attack, int defense, int speed) {
         this.name = name;
-        this.hp = hp;
         this.maxHp = hp;
+        this.hp = hp;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
         this.stun = false;
-        this.statusEffects = new ArrayList<>();
         this.skillCooldown = 0;
+        this.statusEffects = new ArrayList<>();
     }
 
 
@@ -84,9 +83,6 @@ public abstract class Combatant {
         }
     }
 
-    public void clearStatusEffects() {
-        this.statusEffects.clear();
-    }
 
     public List<StatusEffects> getStatusEffects() {
         return this.statusEffects;
