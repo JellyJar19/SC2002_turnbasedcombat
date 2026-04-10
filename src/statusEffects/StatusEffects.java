@@ -1,9 +1,10 @@
 package statusEffects;
+import entities.*;
 
 public abstract class StatusEffects {
 
-    private int duration;
-    private boolean active;
+    int duration;
+    boolean active;
 
     public abstract void onApply(Combatant target);
     public abstract void startTurn(Combatant target);

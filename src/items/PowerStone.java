@@ -4,7 +4,6 @@ import entities.*;
 import entities.enemy.*;
 import entities.player.*;
 
-import Item;
 public class PowerStone extends Item {
     public PowerStone(){
         super("PowerStone");

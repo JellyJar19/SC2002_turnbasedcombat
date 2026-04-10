@@ -1,4 +1,6 @@
 package items;
+import entities.*;
+
 public class Potion extends Item {
     private int healAmount;
 

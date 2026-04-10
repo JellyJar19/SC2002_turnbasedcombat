@@ -1,10 +1,8 @@
 package items;
 
-import Battle;
-import Combatant;
-import Player;
+import entities.*;
+import statusEffects.*;
 
-package items;
 public class SmokeBomb extends Item {
     public SmokeBomb(){
         super("SmokeBomb");

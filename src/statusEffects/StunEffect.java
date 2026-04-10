@@ -1,4 +1,5 @@
 package statusEffects;
+import entities.*;
 
 public class StunEffect extends StatusEffects {
 
