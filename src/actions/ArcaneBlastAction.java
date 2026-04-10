@@ -2,6 +2,7 @@ package actions;
 import entities.*;
 import entities.player.*;
 import entities.enemy.*;
+import battleEngine.*;
 
 public class ArcaneBlastAction extends SpecialSkillAction{
     @Override

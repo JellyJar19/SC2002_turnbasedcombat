@@ -4,6 +4,7 @@ import items.*;
 import entities.*;
 import entities.player.*;
 import entities.enemy.*;
+import battleEngine.*;
 
 public class ShieldBashAction extends SpecialSkillAction{
     @Override
