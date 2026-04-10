@@ -1,19 +1,22 @@
 package items;
-import entities.*;
+import src.entities.Player;
+import src.entities.Combatant;
+import src.battleEngine.Battle;
 
 public abstract class Item {
-    protected String name;
+    private String name;
 
     public Item(String name){
         this.name = name;
     }
 
-    public abstract void use(Player user, Battle battle, Combatant target);
-
     public String getName() {
-        return name;
+        return this.name;
     }
 
+    public abstract String getDescription(); //to be overriden by individual items
+
+    public abstract void use(Player user, Battle battle, Combatant target);
 
     
 }
