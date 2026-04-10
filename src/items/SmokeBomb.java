@@ -10,7 +10,7 @@ public class SmokeBomb implements Item {
 
     @Override
     public boolean use(Combatant user, BattleContext context) {
-        user.addStatusEffect(new SmokeBombEffect(), user);
+        user.addStatusEffect(new SmokeBombEffect());
         return true;
     }
 
