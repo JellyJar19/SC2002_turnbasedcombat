@@ -25,7 +25,7 @@ public abstract class Combatant {
         }
     }
 
-    public void heal(int healAmount) throws IllegalAccessException {
+    public void heal(int healAmount) {
         if (this.hp <= 0) {
             System.out.println("Cannot heal a defeated combatant.");
             return;
