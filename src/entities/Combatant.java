@@ -5,15 +5,15 @@ import java.util.List;
 import statusEffects.*;
 public abstract class Combatant {
 
-    protected String name;
-    protected int hp;
-    protected int maxHp;
-    protected int attack;
-    protected int defense;
-    protected int speed;
-    protected boolean stun; //decides whether combatant is able to make actions for that round
-    protected ArrayList<StatusEffects> statusEffects; //store the status effects that can be applied, program will check if it is active or not  
-    protected int skillCooldown;
+    private String name;
+    private int hp;
+    private int maxHp;
+    private int attack;
+    private int defense;
+    private int speed;
+    private boolean stun; //decides whether combatant is able to make actions for that round
+    private ArrayList<StatusEffects> statusEffects; //store the status effects that can be applied, program will check if it is active or not  
+    private int skillCooldown;
 
     // constructor
     public Combatant(String name, int hp, int attack, int defense, int speed) {
