@@ -1,14 +1,3 @@
-package items;
-
-import ArcaneBlastAction;
-import Battle;
-import Combatant;
-import Player;
-import ShieldBashAction;
-import Warrior;
-import Wizard;
-
-package items;
 public class PowerStone extends Item {
     public PowerStone(){
         super("PowerStone");
