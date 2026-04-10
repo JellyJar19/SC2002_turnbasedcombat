@@ -71,18 +71,6 @@ public abstract class Combatant {
 
 
     //status effects related
-    public void addStatusEffect(StatusEffects effect) {
-        if (effect != null) {
-            this.statusEffects.add(effect);
-        }
-    }
-
-    public void removeStatusEffect(StatusEffects effect) {
-        if (effect != null) {
-            this.statusEffects.remove(effect);
-        }
-    }
-
 
     public List<StatusEffects> getStatusEffects() {
         return this.statusEffects;
