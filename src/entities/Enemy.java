@@ -2,6 +2,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 import statusEffects.*;
+import actions.*;
 
 public abstract class Enemy extends Combatant {
     protected EnemyActionStrategy strategy; // waiting for the class to be made

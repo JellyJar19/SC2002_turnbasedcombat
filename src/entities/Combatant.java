@@ -13,6 +13,7 @@ public abstract class Combatant {
     private int defense;
     private int speed;
     private boolean stun;
+    private boolean invulnerability;
     private int skillCooldown;
     private List<StatusEffects> statusEffects; 
 
@@ -24,6 +25,7 @@ public abstract class Combatant {
         this.defense = defense;
         this.speed = speed;
         this.stun = false;
+        this.invulnerability=false;
         this.skillCooldown = 0;
         this.statusEffects = new ArrayList<>();
     }
@@ -71,6 +73,13 @@ public abstract class Combatant {
 
 
     //status effects related
+    public void addStatusEffect(StatusEffects effect){
+        this.statusEffects.add(effect);
+    }
+
+    public void removeStatusEffect(){
+        for (s)
+    }
 
     public List<StatusEffects> getStatusEffects() {
         return this.statusEffects;
