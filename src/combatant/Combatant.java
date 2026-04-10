@@ -5,6 +5,7 @@ import java.util.List;
 
 import src.items.Item;
 import src.statusEffects.StatusEffects;
+import src.action.*;
 
 public abstract class Combatant {
     private String name;
@@ -16,6 +17,16 @@ public abstract class Combatant {
     private int specialCooldown;
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
+
+    public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
+        this.name = name;
+        this.hp = maxHp;
+        this.maxHp = maxHp;
+        this.baseAttack = baseAttack;
+        this.baseDefense = baseDefense;
+        this.speed = speed;
+        this.inventory = inventory;
+    }
 
     public void takeDamage(int damageAmmount) {
         if (this.hp - damageAmmount < 0) {
@@ -46,6 +57,18 @@ public abstract class Combatant {
     }
 
     public abstract Action getSpecialSkill();
+
+    public void addStatusEffect(StatusEffects effect) {
+        this.activeEffects.add(effect);
+    }
+
+    public void decreaseCooldown() {
+        if (this.specialCooldown > 0) {
+            this.specialCooldown = this.specialCooldown - 1;
+        }
+    }
+
+    public abstract void performTurn(BattleContext context);
 
 
 

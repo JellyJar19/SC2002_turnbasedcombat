@@ -1,0 +1,21 @@
+package src.combatant;
+
+import src.action.*;
+
+public class Wolf extends Combatant{
+
+    public Wolf() {
+        super("Wolf", 40, 45, 5, 35);
+    }
+
+    @Override
+    public Action getSpecialSkill() {
+        return null;
+    }  
+    
+    @Override
+    public void performTurn(BattleContext context) {
+        //to be implemented
+    }
+
+}
