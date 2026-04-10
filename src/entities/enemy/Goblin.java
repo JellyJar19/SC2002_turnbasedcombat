@@ -2,6 +2,7 @@ package entities.enemy;
 import java.util.List;
 
 import entities.*;
+import actions.*;
 
 public class Goblin extends Enemy {
     public Goblin(){
