@@ -1,31 +1,34 @@
 package items;
-import statusEffects.*;
-import entities.*;
-import entities.enemy.*;
-import entities.player.*;
+
+import src.entities.*;
+import src.actions.SpecialSkillAction;
+import src.battleEngine.Battle;
 
 public class PowerStone extends Item {
     public PowerStone(){
         super("PowerStone");
     }
 
-    public void use(Player user, Battle battle, Combatant target){
+    @Override
+    public void use(Player user, Battle battle, Combatant target) {
+        // 1. Save the current cooldown state
         int savedCooldown = user.getSkillCooldown();
 
-        if (user instanceof Warrior){
-            new ShieldBashAction().execute(user, battle, target);
-        }
-        else if (user instanceof Wizard){
-            new ArcaneBlastAction().execute(user, battle, target);
-        }
+        // 2. Fetch the specific player's skill polymorphically (No instanceof!)
+        SpecialSkillAction skill = user.getSpecialSkill();
+        
+        // 3. Execute the skill
+        skill.execute(user, battle, target);
 
+        // 4. Restore the cooldown to fulfill the "Free Extra Use" requirement
         user.setSkillCooldown(savedCooldown);
     }
 
-    public static String getItemDescStatic() {
-        return("Trigger the special skill effect once, but it does not\r\n" + //
-                        "start or change the cooldown timer. In short, free\r\n" + //
-                        "extra use of the skill.");
+    @Override
+    public String getDescription() {
+        return "Trigger the special skill effect once, but it does not " +
+               "start or change the cooldown timer. In short, free " +
+               "extra use of the skill.";
     }
     
 }
