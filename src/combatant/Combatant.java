@@ -4,9 +4,9 @@ import java.lang.annotation.Target;
 import java.util.List;
 
 import src.items.Item;
-import statusEffects.StatusEffects;
+import src.statusEffects.StatusEffects;
 
-public class Combatant {
+public abstract class Combatant {
     private String name;
     private int hp;
     private int maxHp;
@@ -25,9 +25,10 @@ public class Combatant {
         }
     }
 
-    public void heal(int healAmount) {
+    public void heal(int healAmount) throws IllegalAccessException {
         if (this.hp <= 0) {
-            throw new IllegalAccessException("Dead entities shouldn't be healed!!!");
+            System.out.println("Cannot heal a defeated combatant.");
+            return;
         }
         if (this.hp + healAmount > maxHp) {
             this.hp = maxHp;
@@ -43,6 +44,8 @@ public class Combatant {
             return true;
         }
     }
+
+    public abstract Action getSpecialSkill();
 
 
 

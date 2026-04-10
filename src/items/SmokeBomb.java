@@ -1,5 +1,17 @@
 package src.items;
 
-public class SmokeBomb {
+import src.combatant.*;
+import src.statusEffects.*;
+
+public class SmokeBomb implements Item {
+    public String getName() {
+        return("Smoke Bomb");
+    }
+
+    @Override
+    public boolean use(Combatant user, BattleContext context) {
+        user.addStatusEffect(new SmokeBombEffect(), user);
+        return true;
+    }
 
 }
