@@ -4,12 +4,14 @@ public class ShieldBash extends BasicAttack implements Action{
         if (activechar.getSpecialCooldown() > 0){
             super.execute(activechar, target, battle);
             // insert stun effect logic here
+            statusEffect stun = new StunEffect();
+            target.setStatusEffect(stun);
+            activechar.setSpecialCooldown();
             return true;
         } 
         else {
             return false;
         }
-        
 
     }
     @Override

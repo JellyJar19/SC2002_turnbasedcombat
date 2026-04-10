@@ -1,3 +1,7 @@
+package action;
+import statusEffects.*;
+import entities.*;
+
 public class BasicAttack implements Action{
     @Override
     public <T> boolean execute(T activechar, T target, Battle battle){
