@@ -1,12 +1,6 @@
 package items;
 
-import ArcaneBlastAction;
-import Battle;
-import Combatant;
-import Player;
-import ShieldBashAction;
-import Warrior;
-import Wizard;
+import statusEffects.*;
 
 package items;
 public class PowerStone extends Item {
