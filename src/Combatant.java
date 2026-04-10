@@ -46,11 +46,6 @@ public abstract class Combatant {
     }
 
     // this one need see how keane does it
-    public void applyStatusEffects() { //iterate through the list and minus off the status effects
-        
-    }
-
-    // this one need see how keane does it
     //no need to remove expired effects, just need to activate or deactive them
     /* 
     public void removeExpiredEffects() {
