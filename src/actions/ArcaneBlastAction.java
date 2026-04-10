@@ -1,3 +1,8 @@
+package actions;
+import entities.*;
+import entities.player.*;
+import entities.enemy.*;
+
 public class ArcaneBlastAction extends SpecialSkillAction{
     @Override
     public void execute(Combatant activechar, Battle battle, Combatant[] target){ /
