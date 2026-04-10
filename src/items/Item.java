@@ -1,6 +1,8 @@
 package src.items;
 
+import src.combatant.Combatant;
+
 public interface Item {
     public String getName();
-    public void use(Combatant, BattleContext);
+    public boolean use(Combatant user, BattleContext context);
 }
