@@ -1,6 +1,21 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import src.battleEngine.Battle;
+import src.battleEngine.Battle_Engine;
+import src.constClass.ConstantsClass;
+import src.entities.Combatant;
+import src.entities.Player;
+import src.entities.enemy.Goblin;
+import src.entities.enemy.Wolf;
+import src.entities.player.Warrior;
+import src.entities.player.Wizard;
+import src.items.Item;
+import src.items.Potion;
+import src.items.PowerStone;
+import src.items.SmokeBomb;
+import src.level.*;
+
 public abstract class MainMenu extends UserInterface {
     private static Scanner sc = new Scanner(System.in);    
     private static Player playerChar;
@@ -196,7 +211,7 @@ public abstract class MainMenu extends UserInterface {
     
     }
 
-    private static void changeDifficulty(Level difficultyLevel) {
+    private static void changeDifficulty(Level currentLevel) {
         int choice;
 
         System.out.print("Select a difficulty: \n");
@@ -217,8 +232,17 @@ public abstract class MainMenu extends UserInterface {
             }
         }
 
-        difficultyLevel.setDifficulty(choice);
-        return; 
+        switch(choice) {
+    case 1: 
+        currentLevel = new Level(new EasyDifficulty());
+        break;
+    case 2: 
+        currentLevel = new Level(new MediumDifficulty());
+        break;
+    case 3: 
+        currentLevel = new Level(new HardDifficulty());
+        break;
+} 
         }
 
     
