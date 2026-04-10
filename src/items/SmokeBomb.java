@@ -1,15 +1,18 @@
 package items;
 
-import entities.*;
-import statusEffects.*;
+import src.entities.*;
+import src.statusEffects.SmokeBombEffect;
+import src.statusEffects.StatusEffects;
+import src.battleEngine.Battle;
 
 public class SmokeBomb extends Item {
     public SmokeBomb(){
         super("SmokeBomb");
     }
 
-    public void use(Player user, Battle battle, Combatant target){
-        user.addStatusEffect(StatusEffects.SmokeBombEffect);
+    public void use(Player user, Battle battle, Combatant target) {
+        // Creates a new effect instance and cleanly applies it to the user
+        user.addStatusEffect(new SmokeBombEffect());
     }
 
     public static String getItemDescStatic() {
