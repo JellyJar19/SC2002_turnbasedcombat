@@ -12,6 +12,12 @@ public abstract class AbstractAction implements Action {
         int atk = activechar.getTotalAttack(); // check combatant for base attack and buffs
         // need check how the buff attack calculation wld work. 
         int def = target.getTotalDefense(); // check combatant for base def and buffs
-        this.dmg = Math.max(0,atk - def);
+        if (target.getInvulnerability()){
+            return 0;
+        }
+        else{
+            return Math.max(0,atk - def);
+        }
     }
+
 }
