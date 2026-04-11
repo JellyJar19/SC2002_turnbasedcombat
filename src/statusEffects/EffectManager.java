@@ -36,13 +36,16 @@ public class EffectManager{
 
     //to be called each turn
     public void tickEffects(List<StatusEffects> activeEffects,Combatant combatant) {
+        //tick all effects
         for (StatusEffects effect : activeEffects) {
             effect.tick();
         }
+        //collect expired items to list
         List<StatusEffects> res = activeEffects.stream()
                      .filter(s->s.isExpired())
                      .collect(Collectors.toList());
 
+        //
         for (StatusEffects status : res){
             Effects check = status.getType();
             switch(check){
@@ -60,6 +63,8 @@ public class EffectManager{
                 }
             }
         }
+
+        activeEffects.removeAll(res);
     }
 
 

@@ -2,9 +2,9 @@ package statusEffects;
 
 public abstract class StatusEffects {
     protected Effects type;
-    protected int duration;
+    protected double duration;
     
-    public StatusEffects(Effects type,int duration){
+    public StatusEffects(Effects type,double duration){
         this.type = type;
         this.duration = duration;
     }

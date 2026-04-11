@@ -8,6 +8,6 @@ public class DefenseBuffEffect extends StatusEffects {
 
     @Override
     protected int getDefense() {
-        return (this.isExpired())? 10:-10;
+        return (this.isExpired())? -10:10;
     }
 }
