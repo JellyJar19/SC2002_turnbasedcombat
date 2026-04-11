@@ -9,9 +9,9 @@ public abstract class AbstractActions implements Action {
     }
 
     public int calculateDamage(Combatant activechar, Combatant target){
-        int atk = activechar.getTotalAttack(); // check combatant for base attack and buffs
+        int atk = activechar.getBaseAttack(); // check combatant for base attack and buffs
         // need check how the buff attack calculation wld work. 
-        int def = target.getTotalDefense(); // check combatant for base def and buffs
+        int def = target.getBaseDefense(); // check combatant for base def and buffs
         if (target.getInvulnerability()){
             return 0;
         }

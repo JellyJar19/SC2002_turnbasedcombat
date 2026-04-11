@@ -202,6 +202,10 @@ public abstract class Combatant {
         this.availableActions.add(act);
     }
 
+    public void executeAction(Action act, Combatant target, BattleContext battle){
+        act.execute(this, target, battle);
+    }
+
     //status effect
     public void onApplyEffect(ArcaneBuffEffect e){ //called when first applied
         this.baseAttack+=effectManager.applyEffect(activeEffects, e);
