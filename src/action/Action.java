@@ -1,8 +1,8 @@
 package action;
 import statusEffects.*;
-import entities.*;
+import combatant.*;
 
 public interface Action{
-    public <T> boolean execute(T activechar, T target, Battle battle);
+    public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle);
     public string getName();
 }

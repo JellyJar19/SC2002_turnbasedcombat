@@ -1,14 +1,12 @@
 package action;
 import statusEffects.*;
-import entities.*;
+import combatant.*;
 
-public class BasicAttack implements Action{
+public class BasicAttack extends AbstractActions{
     private int dmg;
     @Override
-    public <T> boolean execute(T activechar, T target, Battle battle){
-        int atk = activechar.getAttack();
-        int def = target.getDefense();
-        this.dmg = Math.max(0,atk - def);
+    public <T extends Combatant> boolean execute(T activechar, T target, Battle battle){
+        this.dmg = calculateDamage(activechar, target);
         target.takeDamage(this.dmg);
     }
     @Override
