@@ -5,6 +5,8 @@ import src.action.*;
 public class Warrior extends Combatant {
     public Warrior() {
         super("Warrior", 260, 40, 20, 30);
+        this.setDefaultAction();
+        this.addAvailableAction(new ShieldBash());
     }
 
     @Override
@@ -15,6 +17,7 @@ public class Warrior extends Combatant {
     @Override
     public void performTurn(BattleContext context) {
         //to be implemented
+        // should we implement this as a case statement based on the action chosen by the player?
     }
 
 }
