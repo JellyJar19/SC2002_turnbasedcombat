@@ -66,10 +66,9 @@ public abstract class Combatant {
 
     public abstract Action getSpecialSkill();
 
-    public void addStatusEffect(StatusEffects effect) {
-        this.activeEffects.add(effect);
-    } // shouldnt this be applyeffect??
-
+    //public void addStatusEffect(StatusEffects effect) {
+    //    this.activeEffects.add(effect);
+    // } CHOOSE TOP OR BOTTOM 
     // public void addStatusEffect(StatusEffects effect){
     //     this.activeEffects.applyEffect(this.activeEffects, effect);
     // }
