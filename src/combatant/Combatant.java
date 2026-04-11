@@ -19,12 +19,9 @@ public abstract class Combatant {
     private boolean invulnerable;
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
-<<<<<<< HEAD
     private List<Action> availableActions;
-    private IEffectManager effectManager;
-=======
     private EffectManager effectManager;
->>>>>>> 808ef168924d9b00f8b7bbee7deaf7235c958345
+
 
     public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
         this.name = name;
