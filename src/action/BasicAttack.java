@@ -4,13 +4,18 @@ import combatant.*;
 
 public class BasicAttack extends AbstractActions{
     private int dmg;
+
+    BasicAttack(EffectStage e){
+        super(e);
+        this.dmg = 0
+    })
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         this.dmg = calculateDamage(activechar, target);
         target.takeDamage(this.dmg);
     }
     @Override
-    public string getName(){
+    public String getName(){
         return "Basic Attack";
     }
     public int getDamage(){

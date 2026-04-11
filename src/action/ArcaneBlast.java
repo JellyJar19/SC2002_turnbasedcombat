@@ -1,6 +1,6 @@
 package action;
 import statusEffects.*;
-import entities.*;
+import combatant.*;
 
 public class ArcaneBlast extends BasicAttack{
     public ArcaneBlast(EffectStage e){
@@ -17,18 +17,17 @@ public class ArcaneBlast extends BasicAttack{
                 } else {
                     super.execute(activechar, enemy, battle);
                     if (!enemy.isAlive()) {
-                       activechar.onApplyEffect(this.EffectStage.createEffect(Effects.ARCANEBUFF));
+                       activechar.onApplyEffect(this.effectStage.createEffect(Effects.ARCANEBUFF));
                     } // each kill adds 10 to attack given by arcane blast bonus. 
                 }
             }
-            activechar.setSpecialCooldown(); // set special cooldown
-            return true; // I still need to figure out how the status effects work. 
+            activechar.setSpecialCooldown(3); // set special cooldown
+            return true; 
         }
         else {
             return false;
         }
     };
     @Override
-    public string getName(){return "Arcane Blast";}
+    public String getName(){return "Arcane Blast";}
 }
-// arcane blast still has many issues. 
