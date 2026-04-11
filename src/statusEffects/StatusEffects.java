@@ -9,7 +9,7 @@ public abstract class StatusEffects {
         this.duration = duration;
     }
 
-    protected Effects getType(){
+    public Effects getType(){
         return type;
     }
 
