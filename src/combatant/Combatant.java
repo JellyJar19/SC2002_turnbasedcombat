@@ -35,7 +35,7 @@ public abstract class Combatant {
         this.effectManager = new EffectManager();
         this.availableActions = new ArrayList<Action>();
     }
-
+    //health attributes
     public void takeDamage(int damageAmmount) {
         if (this.hp - damageAmmount < 0) {
             this.hp = 0;
@@ -64,6 +64,7 @@ public abstract class Combatant {
         }
     }
 
+    //actions
     public abstract Action getSpecialSkill();
 
     //public void addStatusEffect(StatusEffects effect) {
@@ -226,6 +227,14 @@ public abstract class Combatant {
 
     public void onEndTurn(){ //called on end of combatant turn to remove all statusEffects that are expired
         effectManager.tickEffects(activeEffects, this); 
+    }
+
+    public void onClearEffects(){
+        effectManager.clearEffects(activeEffects);
+    }
+
+    public void getDesc(){
+        effectManager.getEffectDescriptions(activeEffects);
     }
 
 
