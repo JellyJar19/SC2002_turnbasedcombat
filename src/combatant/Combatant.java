@@ -21,6 +21,7 @@ public abstract class Combatant {
     private boolean invulnerable;
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
+    private List<Action> availableActions;
     private IEffectManager effectManager;
 
     public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
@@ -32,6 +33,7 @@ public abstract class Combatant {
         this.speed = speed;
         this.inventory = inventory;
         this.effectManager = new EffectManager();
+        this.availableActions = availableActions;
     }
 
     public void takeDamage(int damageAmmount) {
@@ -179,6 +181,23 @@ public abstract class Combatant {
     //items
 
     //actions
+    public List<Action> getAvailableActions(){
+        return availableActions;
+    }
+
+    public void setDefaultActions(){
+        BasicAttack ba = new BasicAttack();
+        Defend df = new Defend();
+        this.availableActions = Arrays.asList(ba, df);
+    }
+
+    public void setAvailableActions(List<Action> availableActions){
+        this.availableActions = availableActions;
+    }
+
+    public void addAvailableActions(Action act){
+        this.availableActions.add(act);
+    }
 
     //status effect
     public void onApplyEffect(StatusEffects e){ //called when first applied
