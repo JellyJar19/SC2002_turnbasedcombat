@@ -63,25 +63,6 @@ public class EffectManager{
     }
 
 
-    public boolean isActionPrevented(List<StatusEffects> activeEffects) {
-        for (StatusEffects effect : activeEffects) {
-            if (effect.preventsAction()) {
-                return true;
-            }
-        }
-        return false;
-    }
-    /* 
-    public boolean isDamageNegated(List<StatusEffects> activeEffects) {
-        for (StatusEffects effect : activeEffects) {
-            if (effect.negatesDamage()) {
-                return true;
-            }
-        }
-        return false;
-    }
-    */
-
     public void clearEffects(List<StatusEffects> activeEffects) {
         activeEffects.clear();
     }
