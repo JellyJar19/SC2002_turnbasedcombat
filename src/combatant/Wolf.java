@@ -20,4 +20,6 @@ public class Wolf extends Combatant{
         // refer to Goblin class for the expected battle strategy. 
     }
 
+    
+
 }
