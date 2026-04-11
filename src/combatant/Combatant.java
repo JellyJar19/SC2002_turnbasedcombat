@@ -1,6 +1,7 @@
 package combatant;
 
 import java.lang.annotation.Target;
+import java.util.ArrayList;
 import java.util.List;
 
 import items.*;
@@ -30,9 +31,9 @@ public abstract class Combatant {
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
         this.speed = speed;
-        this.inventory = new List<Item>();
+        this.inventory = new ArrayList<Item>();
         this.effectManager = new EffectManager();
-        this.availableActions = availableActions;
+        this.availableActions = new ArrayList<Action>();
     }
 
     public void takeDamage(int damageAmmount) {
