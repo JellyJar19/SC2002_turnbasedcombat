@@ -53,7 +53,7 @@ public class EffectManager{
                     combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
                 }
                 case Effects.DEFENSEBUFF -> {
-                    combatant.setBaseAttack(combatant.getBaseDefense()+status.getDefense());
+                    combatant.setBaseDefense(combatant.getBaseDefense()+status.getDefense());
                 }
                 case Effects.INVULNERABILITYEFFECT -> {
                     combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
