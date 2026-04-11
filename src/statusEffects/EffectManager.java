@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import combatant.*;
 
-public class EffectManager implements IEffectManager{
+public class EffectManager{
 
 
     //to be called when applying a status effect
-    @Override
+
     public int applyEffect(List<StatusEffects> activeEffects, ArcaneBuffEffect e) { //can only add 1 of such status effects
         boolean check = activeEffects.stream()
                                      .noneMatch(s->s.getType() == Effects.ARCANEBUFF);
@@ -18,24 +18,23 @@ public class EffectManager implements IEffectManager{
         }
         return e.getAttack();
     }
-    @Override
+
     public int applyEffect(List<StatusEffects> activeEffects, DefenseBuffEffect e) { //option to add multiple
         activeEffects.add(e);
         return e.getDefense();
     }
-    @Override
+
     public boolean applyEffect(List<StatusEffects> activeEffects, StunEffect e) { //option to add multiple
         activeEffects.add(e);
         return e.setStun();
     }
-    @Override
+
     public boolean applyEffect(List<StatusEffects> activeEffects, InvulnerabilityEffect e) { //option to add multiple
         activeEffects.add(e);
         return e.setInvulnerability();
     }
 
     //to be called each turn
-    @Override
     public void tickEffects(List<StatusEffects> activeEffects,Combatant combatant) {
         for (StatusEffects effect : activeEffects) {
             effect.tick();
@@ -64,7 +63,6 @@ public class EffectManager implements IEffectManager{
     }
 
 
-    @Override
     public boolean isActionPrevented(List<StatusEffects> activeEffects) {
         for (StatusEffects effect : activeEffects) {
             if (effect.preventsAction()) {
@@ -74,7 +72,6 @@ public class EffectManager implements IEffectManager{
         return false;
     }
 
-    @Override
     public boolean isDamageNegated(List<StatusEffects> activeEffects) {
         for (StatusEffects effect : activeEffects) {
             if (effect.negatesDamage()) {
@@ -84,12 +81,10 @@ public class EffectManager implements IEffectManager{
         return false;
     }
 
-    @Override
     public void clearEffects(List<StatusEffects> activeEffects) {
         activeEffects.clear();
     }
 
-    @Override
     public List<String> getEffectDescriptions(List<StatusEffects> activeEffects) {
         List<String> descriptions = new ArrayList<>();
         for (StatusEffects effect : activeEffects) {

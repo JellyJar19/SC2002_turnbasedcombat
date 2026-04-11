@@ -3,11 +3,9 @@ package combatant;
 import java.lang.annotation.Target;
 import java.util.List;
 
-import src.items.Item;
-import src.statusEffects.*;
-import statusEffects.EffectManager;
-import statusEffects.IEffectManager;
-import src.action.*;
+import items.*;
+import statusEffects.*;
+import action.*;
 
 public abstract class Combatant {
     private String name;
@@ -21,8 +19,12 @@ public abstract class Combatant {
     private boolean invulnerable;
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
+<<<<<<< HEAD
     private List<Action> availableActions;
     private IEffectManager effectManager;
+=======
+    private EffectManager effectManager;
+>>>>>>> 808ef168924d9b00f8b7bbee7deaf7235c958345
 
     public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
         this.name = name;
@@ -31,7 +33,7 @@ public abstract class Combatant {
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
         this.speed = speed;
-        this.inventory = inventory;
+        this.inventory = new List<Item>();
         this.effectManager = new EffectManager();
         this.availableActions = availableActions;
     }
@@ -204,8 +206,20 @@ public abstract class Combatant {
     }
 
     //status effect
-    public void onApplyEffect(StatusEffects e){ //called when first applied
-        e.applyEffect(activeEffects,e);
+    public void onApplyEffect(ArcaneBuffEffect e){ //called when first applied
+        this.baseAttack+=effectManager.applyEffect(activeEffects, e);
+    }
+
+    public void onApplyEffect(DefenseBuffEffect e){ //called when first applied
+        this.baseDefense+=effectManager.applyEffect(activeEffects, e);
+    }
+
+    public void onApplyEffect(StunEffect e){ //called when first applied
+        this.stun=effectManager.applyEffect(activeEffects, e);
+    }
+
+    public void onApplyEffect(InvulnerabilityEffect e){ //called when first applied
+        this.invulnerable=effectManager.applyEffect(activeEffects, e);
     }
 
     public void onEndTurn(){ //called on end of combatant turn to remove all statusEffects that are expired
