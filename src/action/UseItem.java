@@ -16,7 +16,7 @@ public class UseItemAction implements Actions{
     }
     
     public String getName(){
-      return item.getName();
+      return "Use Item";
     }
     
 }
