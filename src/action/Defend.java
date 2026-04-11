@@ -6,7 +6,7 @@ public class Defend implements Action{
     @Override
     public <T> boolean execute(T activechar, T target, BattleContext battle) {
         DefenseBuffEffect df = new DefenseBuffEffect();
-        activechar.addStatusEffect(df);
+        activechar.onApplyEffect(df);
         return true;
     }
     @Override
