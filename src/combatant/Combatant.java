@@ -68,7 +68,11 @@ public abstract class Combatant {
 
     public void addStatusEffect(StatusEffects effect) {
         this.activeEffects.add(effect);
-    }
+    } // shouldnt this be applyeffect??
+
+    // public void addStatusEffect(StatusEffects effect){
+    //     this.activeEffects.applyEffect(this.activeEffects, effect);
+    // }
 
     public void decreaseCooldown() {
         if (this.specialCooldown > 0) {
