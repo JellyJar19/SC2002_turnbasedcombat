@@ -11,7 +11,8 @@ public class UseItemAction implements Actions{
     
     @Override
     public boolean execute(T activechar, T target, Battle battle){
-        // need to check item implementation
+        item.use(activechar, battle);
+        // will need to relook at this w further discussion for the powerstone item - because taht requires specialskill. 
     }
     
     public String getName(){
