@@ -22,16 +22,6 @@ public interface IEffectManager {
      
     public void tickEffects(List<StatusEffects> activeEffects, Combatant combatant);
 
-    
-    //Sums attack modifiers from all active effects.
-     
-    public int getTotalAttackModifier(List<StatusEffects> activeEffects);
-
-    
-    //Sums defense modifiers from all active effects.
-
-    public int getTotalDefenseModifier(List<StatusEffects> activeEffects);
-
     /*
      * Checks if any effect prevents the combatant from acting.
      */

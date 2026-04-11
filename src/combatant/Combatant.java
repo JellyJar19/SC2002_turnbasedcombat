@@ -1,10 +1,12 @@
-package src.combatant;
+package combatant;
 
 import java.lang.annotation.Target;
 import java.util.List;
 
 import src.items.Item;
-import src.statusEffects.StatusEffects;
+import src.statusEffects.*;
+import statusEffects.EffectManager;
+import statusEffects.IEffectManager;
 import src.action.*;
 
 public abstract class Combatant {
@@ -19,6 +21,7 @@ public abstract class Combatant {
     private boolean invulnerable;
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
+    private IEffectManager effectManager;
 
     public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
         this.name = name;
@@ -28,6 +31,7 @@ public abstract class Combatant {
         this.baseDefense = baseDefense;
         this.speed = speed;
         this.inventory = inventory;
+        this.effectManager = new EffectManager();
     }
 
     public void takeDamage(int damageAmmount) {
@@ -168,4 +172,22 @@ public abstract class Combatant {
     public void setStun(boolean boo){
         this.stun=boo;
     }
+
+
+    //combatant logic
+
+    //items
+
+    //actions
+
+    //status effect
+    public void onApplyEffect(StatusEffects e){ //called when first applied
+        e.applyEffect(activeEffects,e);
+    }
+
+    public void onEndTurn(){ //called on end of combatant turn to remove all statusEffects that are expired
+        effectManager.tickEffects(activeEffects, this); 
+    }
+
+
 }

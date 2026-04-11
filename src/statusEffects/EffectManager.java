@@ -10,22 +10,26 @@ public class EffectManager implements IEffectManager{
 
     //to be called when applying a status effect
     @Override
-    public int applyEffect(List<StatusEffects> activeEffects, ArcaneBuffEffect e) {
-        activeEffects.add(e);
+    public int applyEffect(List<StatusEffects> activeEffects, ArcaneBuffEffect e) { //can only add 1 of such status effects
+        boolean check = activeEffects.stream()
+                                     .noneMatch(s->s.getType() == Effects.ARCANEBUFF);
+        if (check){
+            activeEffects.add(e);
+        }
         return e.getAttack();
     }
     @Override
-    public int applyEffect(List<StatusEffects> activeEffects, DefenseBuffEffect e) {
+    public int applyEffect(List<StatusEffects> activeEffects, DefenseBuffEffect e) { //option to add multiple
         activeEffects.add(e);
-        return e.getAttack();
+        return e.getDefense();
     }
     @Override
-    public boolean applyEffect(List<StatusEffects> activeEffects, StunEffect e) {
+    public boolean applyEffect(List<StatusEffects> activeEffects, StunEffect e) { //option to add multiple
         activeEffects.add(e);
         return e.setStun();
     }
     @Override
-    public boolean applyEffect(List<StatusEffects> activeEffects, InvulnerabilityEffect e) {
+    public boolean applyEffect(List<StatusEffects> activeEffects, InvulnerabilityEffect e) { //option to add multiple
         activeEffects.add(e);
         return e.setInvulnerability();
     }
@@ -44,13 +48,13 @@ public class EffectManager implements IEffectManager{
             Effects check = status.getType();
             switch(check){
                 case Effects.ARCANEBUFF -> {
-                    combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack());
+                    combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
                 }
                 case Effects.DEFENSEBUFF -> {
                     combatant.setBaseAttack(combatant.getBaseDefense()+status.getDefense());
                 }
                 case Effects.INVULNERABILITYEFFECT -> {
-                    combatant.setInvulnerability(status.setInvulnerability());
+                    combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
                 }
                 case Effects.STUNEFFECT -> {
                     combatant.setStun(status.setStun());
@@ -59,23 +63,6 @@ public class EffectManager implements IEffectManager{
         }
     }
 
-    @Override
-    public int getTotalAttackModifier(List<StatusEffects> activeEffects) {
-        int total = 0;
-        for (StatusEffects effect : activeEffects) {
-            total += effect.getAttackModifier();
-        }
-        return total;
-    }
-
-    @Override
-    public int getTotalDefenseModifier(List<StatusEffects> activeEffects) {
-        int total = 0;
-        for (StatusEffects effect : activeEffects) {
-            total += effect.getDefenseModifier();
-        }
-        return total;
-    }
 
     @Override
     public boolean isActionPrevented(List<StatusEffects> activeEffects) {
