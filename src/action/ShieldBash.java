@@ -5,10 +5,10 @@ public class ShieldBash extends BasicAttack{
     }
 
     @Override
-    public <T> boolean execute(T activechar, T target, Battle battle){
+    public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         if (activechar.getSpecialCooldown() > 0){
             super.execute(activechar, target, battle);
-            activechar.onApplyEffect(e.createEffect(STUNEFFECT));
+            target.onApplyEffect(this.EffectStage.createEffect(Effects.STUNEFFECT));
             activechar.setSpecialCooldown();
             return true;
         } 

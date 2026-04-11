@@ -1,7 +1,7 @@
 package action;
 import combatant.*;
 
-public abstract class AbstractAction implements Action {
+public abstract class AbstractActions implements Action {
     protected final EffectStage effectStage;
 
     public AbstractActions(EffectStage effectStage) {

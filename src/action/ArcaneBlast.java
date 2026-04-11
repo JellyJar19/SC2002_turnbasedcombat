@@ -8,7 +8,7 @@ public class ArcaneBlast extends BasicAttack{
     }
     
     @Override
-    public <T> boolean execute(T activechar, T target, BattleContext battle){
+    public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         // loop through all the targets
         if (activechar.getSpecialCooldown() > 0){
             for (Combatant enemy : battle.getAllEnemies()){
@@ -17,7 +17,7 @@ public class ArcaneBlast extends BasicAttack{
                 } else {
                     super.execute(activechar, enemy, battle);
                     if (!enemy.isAlive()) {
-                       activechar.onApplyEffect(e.createEffect(ARCANEBUFFEFFECT));
+                       activechar.onApplyEffect(this.EffectStage.createEffect(Effects.ARCANEBUFF));
                     } // each kill adds 10 to attack given by arcane blast bonus. 
                 }
             }

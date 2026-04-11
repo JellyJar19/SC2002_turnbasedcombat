@@ -4,5 +4,5 @@ import combatant.*;
 
 public interface Action{
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle);
-    public string getName();
+    public String getName();
 }
