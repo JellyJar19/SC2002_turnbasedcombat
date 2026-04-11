@@ -71,7 +71,7 @@ public class EffectManager{
         }
         return false;
     }
-
+    /* 
     public boolean isDamageNegated(List<StatusEffects> activeEffects) {
         for (StatusEffects effect : activeEffects) {
             if (effect.negatesDamage()) {
@@ -80,6 +80,7 @@ public class EffectManager{
         }
         return false;
     }
+    */
 
     public void clearEffects(List<StatusEffects> activeEffects) {
         activeEffects.clear();
@@ -88,7 +89,7 @@ public class EffectManager{
     public List<String> getEffectDescriptions(List<StatusEffects> activeEffects) {
         List<String> descriptions = new ArrayList<>();
         for (StatusEffects effect : activeEffects) {
-            descriptions.add(effect.getName() + " (" + effect.getRemainingTurns() + " turns)");
+            descriptions.add(effect.getType() + " (" + effect.duration + " turns)");
         }
         return descriptions;
     }

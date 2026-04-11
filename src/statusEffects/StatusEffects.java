@@ -1,8 +1,8 @@
 package statusEffects;
 
 public abstract class StatusEffects {
-    private Effects type;
-    private int duration;
+    protected Effects type;
+    protected int duration;
     
     public StatusEffects(Effects type,int duration){
         this.type = type;
