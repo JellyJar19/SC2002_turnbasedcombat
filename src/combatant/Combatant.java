@@ -210,19 +210,39 @@ public abstract class Combatant {
     }
 
     //status effect
-    public void onApplyEffect(ArcaneBuffEffect e){ //called when first applied
+
+    //dispatcher method for statusEffects - this will be the only single public entry point
+    public void applyStatusEffect(StatusEffects effect) {
+    if (effect instanceof ArcaneBuffEffect) {
+            onApplyEffect((ArcaneBuffEffect) effect);
+        } 
+        else if (effect instanceof DefenseBuffEffect) {
+            onApplyEffect((DefenseBuffEffect) effect);
+        } 
+        else if (effect instanceof StunEffect) {
+            onApplyEffect((StunEffect) effect);
+        } 
+        else if (effect instanceof InvulnerabilityEffect) {
+            onApplyEffect((InvulnerabilityEffect) effect);
+        } 
+        else {
+            throw new IllegalArgumentException("Unknown effect: " + effect.getClass().getSimpleName());
+        }
+    }
+
+    protected void onApplyEffect(ArcaneBuffEffect e){ //called when first applied
         this.baseAttack+=effectManager.applyEffect(activeEffects, e);
     }
 
-    public void onApplyEffect(DefenseBuffEffect e){ //called when first applied
+    protected void onApplyEffect(DefenseBuffEffect e){ //called when first applied
         this.baseDefense+=effectManager.applyEffect(activeEffects, e);
     }
 
-    public void onApplyEffect(StunEffect e){ //called when first applied
+    protected void onApplyEffect(StunEffect e){ //called when first applied
         this.stun=effectManager.applyEffect(activeEffects, e);
     }
 
-    public void onApplyEffect(InvulnerabilityEffect e){ //called when first applied
+    protected void onApplyEffect(InvulnerabilityEffect e){ //called when first applied
         this.invulnerable=effectManager.applyEffect(activeEffects, e);
     }
 

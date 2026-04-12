@@ -17,7 +17,7 @@ public class ArcaneBlast extends BasicAttack{
                 } else {
                     super.execute(activechar, enemy, battle);
                     if (!enemy.isAlive()) {
-                       activechar.onApplyEffect(this.effectStage.createEffect(Effects.ARCANEBUFF));
+                       activechar.applyStatusEffect(this.effectStage.createEffect(Effects.ARCANEBUFF));
                     } // each kill adds 10 to attack given by arcane blast bonus. 
                 }
             }

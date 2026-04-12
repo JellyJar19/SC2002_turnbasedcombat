@@ -8,7 +8,7 @@ public class Defend extends AbstractActions{
 
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle) {
-        activechar.onApplyEffect(this.effectStage.createEffect(Effects.DEFENSEBUFF));
+        activechar.applyStatusEffect(this.effectStage.createEffect(Effects.DEFENSEBUFF));
         return true;
     }
     @Override
