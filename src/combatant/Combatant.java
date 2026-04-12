@@ -182,7 +182,7 @@ public abstract class Combatant {
         return availableActions;
     }
 
-    public void setDefaultActions(){
+    protected void setDefaultActions(){
         BasicAttack ba = new BasicAttack();
         Defend df = new Defend();
         //UseItem ui = new UseItem();
@@ -193,7 +193,7 @@ public abstract class Combatant {
         this.availableActions = availableActions;
     }
 
-    public void addAvailableActions(Action act){
+    protected void addAvailableActions(Action act){
         this.availableActions.add(act);
     }
 
