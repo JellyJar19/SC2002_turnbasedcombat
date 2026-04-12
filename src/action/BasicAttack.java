@@ -12,6 +12,7 @@ public class BasicAttack extends AbstractActions{
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         this.dmg = calculateDamage(activechar, target);
         target.takeDamage(this.dmg);
+        //return boolean??
     }
     @Override
     public String getName(){

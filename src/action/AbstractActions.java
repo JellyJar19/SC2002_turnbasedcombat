@@ -6,8 +6,7 @@ public abstract class AbstractActions implements Action {
     protected final EffectStage effectStage;
 
     public AbstractActions() { //empty parameters
-        this.effectStage = new StdEffectStage() {
-        };
+        this.effectStage = new StdEffectStage();
     }
 
     public int calculateDamage(Combatant activechar, Combatant target){
