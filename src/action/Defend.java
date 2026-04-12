@@ -3,8 +3,7 @@ import statusEffects.*;
 import combatant.*;
 
 public class Defend extends AbstractActions{
-    public Defend(EffectStage e){
-        super(e);
+    public Defend(){
     }
 
     @Override

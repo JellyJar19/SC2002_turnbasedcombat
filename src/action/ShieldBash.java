@@ -5,8 +5,7 @@ import statusEffects.*;
 
 public class ShieldBash extends BasicAttack{
 
-    public ShieldBash(EffectStage e){
-        super(e);
+    public ShieldBash(){
     }
 
     @Override

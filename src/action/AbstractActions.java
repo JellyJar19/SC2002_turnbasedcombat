@@ -1,11 +1,18 @@
 package action;
 import combatant.*;
 
+/*
+Did some minor fixes on syntax on test branch
+*/
+
+
+
 public abstract class AbstractActions implements Action {
     protected final EffectStage effectStage;
 
-    public AbstractActions(EffectStage effectStage) {
-        this.effectStage = effectStage;
+    public AbstractActions() { //empty parameters
+        this.effectStage = new StdEffectStage() {
+        };
     }
 
     public int calculateDamage(Combatant activechar, Combatant target){

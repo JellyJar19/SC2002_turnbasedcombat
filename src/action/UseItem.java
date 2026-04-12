@@ -5,8 +5,7 @@ import combatant.*;
 public class UseItem extends AbstractActions{
     private Item item;
 
-    UseItem(EffectStage e, Item item){ //corrected some bugs here
-        super(e);
+    UseItem(Item item){ //corrected some bugs here
         this.item = item;
     }
     

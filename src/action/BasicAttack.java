@@ -5,9 +5,8 @@ import combatant.*;
 public class BasicAttack extends AbstractActions{
     private int dmg;
 
-    BasicAttack(EffectStage e){
-        super(e);
-        this.dmg = 0
+    BasicAttack(){ //remove the parameters
+        this.dmg = 0;
     })
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
