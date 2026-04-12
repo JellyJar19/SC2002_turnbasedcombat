@@ -148,14 +148,6 @@ public abstract class Combatant {
         this.specialCooldown = Math.max(0, specialCooldown); // cooldown can't go below 0
     }
 
-    // ── activeEffects ─────────────────────────────────────
-    public List<StatusEffects> getActiveEffects() {
-        return activeEffects;
-    }
-
-    public void setActiveEffects(List<StatusEffects> activeEffects) {
-        this.activeEffects = activeEffects;
-    }
 
     // ── inventory ─────────────────────────────────────────
     public List<Item> getInventory() {
