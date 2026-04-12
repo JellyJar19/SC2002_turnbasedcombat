@@ -12,7 +12,7 @@ public class ShieldBash extends BasicAttack{
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         if (activechar.getSpecialCooldown() > 0){
             super.execute(activechar, target, battle);
-            target.onApplyEffect(this.effectStage.createEffect(Effects.STUNEFFECT));
+            target.applyStatusEffect(this.effectStage.createEffect(Effects.STUNEFFECT));
             activechar.setSpecialCooldown(3);
             return true;
         } 
