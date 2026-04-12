@@ -7,7 +7,7 @@ public class BasicAttack extends AbstractActions{
 
     BasicAttack(){ //remove the parameters
         this.dmg = 0;
-    })
+    }
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         this.dmg = calculateDamage(activechar, target);
