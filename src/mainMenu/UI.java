@@ -57,9 +57,22 @@ public class UI {
         System.out.println("Choose your class:");
         System.out.println("1. Warrior (HP:260, ATK:40, DEF:20, SPD:30)");
         System.out.println("2. Wizard (HP:200, ATK:50, DEF:10, SPD:20)");
-        int choice = scanner.nextInt();
-        if (choice == 1) return new Warrior();
-        else return new Wizard();
+        int choice;
+        while(true){
+            try{
+                choice = scanner.nextInt();
+                if (choice==1)
+                    return new Warrior();
+                else if (choice == 2)
+                    return new Wizard();
+                else
+                    System.out.println("Enter a number between 1 and 6 only!");
+            }
+            catch(InputMismatchException e){
+                scanner.next(); //clear the error line
+                System.out.println("Enter integers only!");
+            }
+        }
     }
     
     private List<Item> selectItems() {
@@ -69,11 +82,36 @@ public class UI {
         System.out.println("2. Smoke Bomb (invulnerability for 2 turns)");
         System.out.println("3. Power Stone (use special skill without cooldown)");
         for (int i = 0; i < 2; i++) {
+            int choice;
+            while(true){
+                try{
+                    choice = scanner.nextInt();
+                    if (choice == 1){
+                        items.add(new Potion());
+                        break;
+                    }
+                    else if (choice == 2){
+                        items.add(new SmokeBomb());
+                        break;
+                    }
+                        
+                    else if (choice == 3){
+                        items.add(new PowerStone());
+                        break;
+                    }
+                    else
+                        System.out.println("Only numbers 1 to 3 allowed!");
+                    
+                    
+                }
+                catch(InputMismatchException e){
+                    scanner.next(); //clear the error line
+                    System.out.println("Enter integers only!");
+                }
+            }
+
             System.out.print("Item " + (i+1) + ": ");
-            int choice = scanner.nextInt();
-            if (choice == 1) items.add(new Potion());
-            else if (choice == 2) items.add(new SmokeBomb());
-            else items.add(new PowerStone());
+            
         }
         return items;
     }
