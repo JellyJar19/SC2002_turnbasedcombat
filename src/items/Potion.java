@@ -11,8 +11,8 @@ public class Potion implements Item {
     }
 
     @Override
-    public boolean use(Combatant user, BattleContext context) {
-        user.heal(healAmount);
+    public boolean use(Combatant user, Combatant target, BattleContext context) {
+        target.heal(healAmount);
         return true;
     }
 

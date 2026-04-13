@@ -10,8 +10,8 @@ public class PowerStone implements Item {
     }
 
     @Override
-    public boolean use(Combatant user, BattleContext context) {
+    public boolean use(Combatant user, Combatant target, BattleContext context) {
         Action specialSkill = user.getSpecialSkill();
-        return(specialSkill.execute(user, context));
+        return(specialSkill.execute(user, target, context));
     }
 }

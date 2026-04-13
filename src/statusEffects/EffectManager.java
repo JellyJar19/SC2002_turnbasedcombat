@@ -1,6 +1,5 @@
 package statusEffects;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import combatant.*;
@@ -49,16 +48,16 @@ public class EffectManager{
         for (StatusEffects status : res){
             Effects check = status.getType();
             switch(check){
-                case Effects.ARCANEBUFF -> {
+                case ARCANEBUFF -> {
                     combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
                 }
-                case Effects.DEFENSEBUFF -> {
+                case DEFENSEBUFF -> {
                     combatant.setBaseDefense(combatant.getBaseDefense()+status.getDefense());
                 }
-                case Effects.INVULNERABILITYEFFECT -> {
+                case INVULNERABILITYEFFECT -> {
                     combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
                 }
-                case Effects.STUNEFFECT -> {
+                case STUNEFFECT -> {
                     combatant.setStun(status.setStun());
                 }
             }

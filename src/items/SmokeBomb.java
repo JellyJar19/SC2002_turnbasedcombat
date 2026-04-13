@@ -10,7 +10,7 @@ public class SmokeBomb implements Item {
     }
 
     @Override
-    public boolean use(Combatant user, BattleContext context) {
+    public boolean use(Combatant user, Combatant target, BattleContext context) {
         user.applyStatusEffect(new InvulnerabilityEffect());
         return true;
     }
