@@ -5,7 +5,7 @@ import combatant.*;
 public class UseItem extends AbstractActions{
     private Item item;
 
-    UseItem(Item item){ //corrected some bugs here
+    public UseItem(Item item){ //corrected some bugs here
         this.item = item;
     }
     
