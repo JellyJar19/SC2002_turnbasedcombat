@@ -22,7 +22,7 @@ public abstract class Combatant {
     private List<StatusEffects> activeEffects;
     private List<Item> inventory;
     private List<Action> availableActions;
-    private EffectManager effectManager;
+    private EffectManager effectManager = new EffectManager();
 
 
     public Combatant(String name, int maxHp, int baseAttack, int baseDefense, int speed) {
@@ -32,10 +32,11 @@ public abstract class Combatant {
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
         this.speed = speed;
-        this.inventory = new ArrayList<Item>();
-        this.effectManager = new EffectManager();
-        
         this.availableActions = new ArrayList<Action>();
+        Action ba = new BasicAttack();
+        Action df = new Defend();
+        this.availableActions.add(ba);
+        this.availableActions.add(df);
     }
     //health attributes
     public void takeDamage(int damageAmmount) {
@@ -179,19 +180,13 @@ public abstract class Combatant {
     //items
 
     //actions
-    public List<Action> getAvailableActions(){
+    protected List<Action> getAvailableActions(){
         return availableActions;
     }
 
-    public void setDefaultActions(){
-        BasicAttack ba = new BasicAttack();
-        Defend df = new Defend();
-        //UseItem ui = new UseItem();
-        this.availableActions = Arrays.asList(ba, df);
-    }
 
-    public void setAvailableActions(List<Action> availableActions){
-        this.availableActions = availableActions;
+    protected void setAvailableActions(Action extrAction){
+        this.availableActions.add(extrAction);
     }
 
     public void addAvailableActions(Action act){

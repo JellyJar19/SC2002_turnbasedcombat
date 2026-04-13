@@ -7,7 +7,6 @@ import battleEngine.*;
 public class Wizard extends Combatant {
     public Wizard() {
         super("Wizard", 200, 50, 10, 20);
-        this.setDefaultActions();
         this.addAvailableActions((Action)new ArcaneBlast());
     }
 
