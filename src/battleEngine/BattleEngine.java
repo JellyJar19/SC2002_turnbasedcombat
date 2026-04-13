@@ -138,8 +138,7 @@ public class BattleEngine {
         }
 
         // Standard Enemy AI
-        Action enemyAction = new BasicAttack(); 
-        enemyAction.execute(c, context.getPlayer(), context);
+        c.performTurn(context);
         c.onEndTurn();
         
         logs.add(c.getName() + " attacked " + context.getPlayer().getName());

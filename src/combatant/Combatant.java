@@ -1,7 +1,6 @@
 package combatant;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import items.*;
@@ -211,10 +210,7 @@ public abstract class Combatant {
 
     public void onEndTurn() {
         // Tick all effects and remove expired ones
-        activeEffects.removeIf(effect -> {
-            effect.tick();
-            return effect.isExpired();
-        });
+        effectManager.tickEffects(this.activeEffects, this);
     }
 
     
