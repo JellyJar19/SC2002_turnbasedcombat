@@ -7,8 +7,8 @@ import battleEngine.*;
 public class Warrior extends Combatant {
     public Warrior() {
         super("Warrior", 260, 40, 20, 30);
-        this.setDefaultAction();
-        this.addAvailableAction(new ShieldBash());
+        this.setDefaultActions();
+        this.addAvailableActions(new ShieldBash());
     }
 
     @Override

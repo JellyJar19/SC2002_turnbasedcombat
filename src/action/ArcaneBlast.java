@@ -4,14 +4,14 @@ import combatant.*;
 import battleEngine.*;
 
 public class ArcaneBlast extends BasicAttack{
-    public ArcaneBlast(EffectStage e){
+    public ArcaneBlast(){
     }
     
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         // loop through all the targets
         if (activechar.getSpecialCooldown() > 0){
-            for (Combatant enemy : battle.getAllEnemies()){
+            for (Combatant enemy : battle.getEnemies()){
                 if (!enemy.isAlive() && enemy.getInvulnerability()){ //added condition for .getInvulnerability
                     continue; // skip over enemies that are already dead or invulnerable
                 } else {
