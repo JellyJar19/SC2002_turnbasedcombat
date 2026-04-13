@@ -1,6 +1,7 @@
 package combatant;
 
 import action.*;
+import battleEngine.*;
 
 public class Wolf extends Combatant{
 

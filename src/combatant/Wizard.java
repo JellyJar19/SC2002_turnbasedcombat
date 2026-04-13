@@ -2,6 +2,7 @@ package combatant;
 
 import action.ArcaneBlast;
 import action.*;
+import battleEngine.*;
 
 public class Wizard extends Combatant {
     public Wizard() {
