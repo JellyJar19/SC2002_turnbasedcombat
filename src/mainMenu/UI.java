@@ -83,6 +83,7 @@ public class UI {
         System.out.println("3. Power Stone (use special skill without cooldown)");
         for (int i = 0; i < 2; i++) {
             int choice;
+            System.out.print("Item " + (i+1) + ": ");
             while(true){
                 try{
                     choice = scanner.nextInt();
@@ -109,9 +110,6 @@ public class UI {
                     System.out.println("Enter integers only!");
                 }
             }
-
-            System.out.print("Item " + (i+1) + ": ");
-            
         }
         return items;
     }
