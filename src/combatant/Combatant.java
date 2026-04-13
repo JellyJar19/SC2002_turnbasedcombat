@@ -19,7 +19,7 @@ public abstract class Combatant {
     private int specialCooldown;
     private boolean stun;
     private boolean invulnerable;
-    private List<StatusEffects> activeEffects;
+    private List<StatusEffects> activeEffects = new ArrayList<>();
     private List<Item> inventory;
     private List<Action> availableActions;
     private EffectManager effectManager = new EffectManager();

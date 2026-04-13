@@ -10,10 +10,10 @@ public class ArcaneBlast extends BasicAttack{
     @Override
     public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle){
         // loop through all the targets
-        if (activechar.getSpecialCooldown() > 0){
+        if (activechar.getSpecialCooldown() == 0){
             for (Combatant enemy : battle.getEnemies()){
-                if (!enemy.isAlive() && enemy.getInvulnerability()){ //added condition for .getInvulnerability
-                    continue; // skip over enemies that are already dead or invulnerable
+                if (!enemy.isAlive() || enemy.getInvulnerability()){ // skip dead or invulnerable enemies
+                    continue;
                 } else {
                     super.execute(activechar, enemy, battle);
                     if (!enemy.isAlive()) {

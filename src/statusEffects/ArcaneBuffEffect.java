@@ -8,7 +8,7 @@ public class ArcaneBuffEffect extends StatusEffects {
 
     @Override
     protected int getAttack(){ 
-        return (this.isExpired())? -10:10;
+        return 10;
     }
 
 

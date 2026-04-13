@@ -15,8 +15,9 @@ public class EffectManager{
                                      .noneMatch(s->s.getType() == Effects.ARCANEBUFF);
         if (check){
             activeEffects.add(e);
+            return e.getAttack();
         }
-        return e.getAttack();
+        return 0;
     }
 
     public int applyEffect(List<StatusEffects> activeEffects, DefenseBuffEffect e) { //option to add multiple
@@ -35,7 +36,7 @@ public class EffectManager{
     }
 
     //to be called each turn
-    public void tickEffects(List<StatusEffects> activeEffects,Combatant combatant) {
+    public void tickEffects(List<StatusEffects> activeEffects, Combatant combatant) {
         //tick all effects
         for (StatusEffects effect : activeEffects) {
             effect.tick();
@@ -45,21 +46,21 @@ public class EffectManager{
                      .filter(s->s.isExpired())
                      .collect(Collectors.toList());
 
-        //
+        //reverse the stat changes of expired effects
         for (StatusEffects status : res){
             Effects check = status.getType();
             switch(check){
-                case Effects.ARCANEBUFF -> {
-                    combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
+                case ARCANEBUFF -> {
+                    combatant.setBaseAttack(combatant.getBaseAttack() - 10); // reverse the +10 applied on add
                 }
-                case Effects.DEFENSEBUFF -> {
-                    combatant.setBaseDefense(combatant.getBaseDefense()+status.getDefense());
+                case DEFENSEBUFF -> {
+                    combatant.setBaseDefense(combatant.getBaseDefense() - 10); // reverse the +10 applied on add
                 }
-                case Effects.INVULNERABILITYEFFECT -> {
-                    combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
+                case INVULNERABILITYEFFECT -> {
+                    combatant.setInvulnerability(false);
                 }
-                case Effects.STUNEFFECT -> {
-                    combatant.setStun(status.setStun());
+                case STUNEFFECT -> {
+                    combatant.setStun(false);
                 }
             }
         }

@@ -32,9 +32,6 @@ public class BattleEngine {
     public String processTurn(Combatant combatant) {
         if (!combatant.isAlive()) return combatant.getName() + " is dead, turn skipped.";
         if (combatant.getStun()) {
-            combatant.setStun(false); // stun only lasts one turn? According to spec, stun lasts current and next turn.
-            // Actually in your StunEffect, duration is 2, and it's cleared after ticks. We'll rely on effect manager.
-            // But here we need to check if stun is active. We'll use combatant.getStun() which is set by effect.
             combatant.onEndTurn(); // tick effects
             return combatant.getName() + " is stunned and cannot act.";
         }
@@ -66,7 +63,6 @@ public class BattleEngine {
         Combatant player = context.getPlayer();
         if (!player.isAlive()) return "Player is defeated, cannot act.";
         if (player.getStun()) {
-            player.setStun(false);
             player.onEndTurn();
             return "Player is stunned and cannot act.";
         }
@@ -154,7 +150,6 @@ public class BattleEngine {
             if (c != context.getPlayer() && c.isAlive()) {
                 // Enemy turn
                 if (c.getStun()) {
-                    c.setStun(false);
                     c.onEndTurn();
                     logs.add(c.getName() + " is stunned, turn skipped.");
                 } else {

@@ -12,6 +12,14 @@ public class PowerStone implements Item {
     @Override
     public boolean use(Combatant user, BattleContext context) {
         Action specialSkill = user.getSpecialSkill();
-        return(specialSkill.execute(user, context));
+        if (specialSkill == null) return false;
+        // Use first alive enemy as target placeholder; ArcaneBlast ignores it and hits all enemies internally
+        Combatant target = context.getEnemies().stream()
+                .filter(e -> e.isAlive())
+                .findFirst()
+                .orElse(user);
+        // Bypass cooldown: temporarily set cooldown to 0 so the skill fires
+        user.setSpecialCooldown(0);
+        return specialSkill.execute(user, target, context);
     }
 }
