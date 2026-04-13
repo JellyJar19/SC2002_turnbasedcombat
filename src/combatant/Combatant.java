@@ -186,7 +186,7 @@ public abstract class Combatant {
         BasicAttack ba = new BasicAttack();
         Defend df = new Defend();
         //UseItem ui = new UseItem();
-        this.availableActions = Arrays.asList(ba, df, ui);
+        this.availableActions = Arrays.asList(ba, df);
     }
 
     public void setAvailableActions(List<Action> availableActions){
