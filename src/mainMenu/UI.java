@@ -219,8 +219,15 @@ public class UI {
     }
     
     private void displayStatus() {
+        
         Combatant player = engine.getContext().getPlayer();
         System.out.println("\n" + player.getName() + " HP: " + player.getHp() + "/" + player.getMaxHp());
+
+        List<String> effects = player.getStatusDescriptions();
+    if (!effects.isEmpty()) {
+        System.out.println("Status: " + String.join(", ", effects));
+    }
+    
         System.out.println("Special Cooldown: " + player.getSpecialCooldown());
         System.out.print("Items: ");
         for (Item item : engine.getContext().getPlayerItems()) {

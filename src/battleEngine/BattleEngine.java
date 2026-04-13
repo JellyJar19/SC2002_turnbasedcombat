@@ -30,33 +30,18 @@ public class BattleEngine {
 
     // Process a single turn for a given combatant (used by both player and enemies)
     public String processTurn(Combatant combatant) {
-        if (!combatant.isAlive()) return combatant.getName() + " is dead, turn skipped.";
-        if (combatant.getStun()) {
-            combatant.onEndTurn(); // tick effects
-            return combatant.getName() + " is stunned and cannot act.";
-        }
-        // Decrease special cooldown if applicable
-        combatant.decreaseCooldown();
+    if (!combatant.isAlive()) return combatant.getName() + " is defeated.";
 
-        // Perform the turn - this will be overridden for player vs enemy.
-        // We'll handle player turn separately via UI, and enemy turn here.
-        // So we need to know if combatant is player or enemy.
-        if (combatant == context.getPlayer()) {
-            // Player turn is handled by UI calling executePlayerAction, not here.
-            // So this method will only be called for enemies.
-            return "Player turn should be handled by UI.";
-        } else {
-            // Enemy turn: always basic attack on player
-            Action basic = new BasicAttack();
-            boolean success = basic.execute(combatant, context.getPlayer(), context);
-            combatant.onEndTurn(); // tick effects after action
-            if (success) {
-                return combatant.getName() + " used Basic Attack on " + context.getPlayer().getName();
-            } else {
-                return combatant.getName() + " failed to attack.";
-            }
-        }
+    if (combatant == context.getPlayer()) {
+        // Player turn is still driven by UI input
+        return "Waiting for player...";
+    } else {
+        // Enemy turn: Polymorphic call! 
+        // The Goblin (or Wolf) decides what to do itself.
+        combatant.performTurn(context);
+        return combatant.getName() + " performed their action.";
     }
+}
 
     // Execute a player-chosen action
     public String executePlayerAction(int actionIndex, int targetEnemyIndex, int itemIndex) {
@@ -140,42 +125,29 @@ public class BattleEngine {
     // Process all enemy turns in order (until next player turn)
     // Returns list of log messages for each enemy turn.
     public List<String> processEnemyTurns() {
-        List<String> logs = new ArrayList<>();
-        // Get current turn order, and process from current index until we reach player again.
-        List<Combatant> turnOrder = context.getTurnOrder();
-        int startIdx = context.getCurrentTurnIndex();
-        int idx = startIdx;
-        do {
-            Combatant c = turnOrder.get(idx);
-            if (c != context.getPlayer() && c.isAlive()) {
-                // Enemy turn
-                if (c.getStun()) {
-                    c.onEndTurn();
-                    logs.add(c.getName() + " is stunned, turn skipped.");
-                } else {
-                    c.decreaseCooldown();
-                    Action basic = new BasicAttack();
-                    basic.execute(c, context.getPlayer(), context);
-                    c.onEndTurn();
-                    logs.add(c.getName() + " used Basic Attack on " + context.getPlayer().getName());
-                }
-                // After each enemy, check if player died
-                if (context.isPlayerDefeated()) break;
-                // Check if all enemies dead (possible if special skill killed last enemy during player turn, but here enemy turns only)
-                if (context.areAllEnemiesDefeated()) break;
-            }
-            idx = (idx + 1) % turnOrder.size();
-        } while (idx != startIdx && !context.isPlayerDefeated() && !context.areAllEnemiesDefeated());
-        // Update current turn index to the next player (or after last enemy)
-        // We'll set to the index of player in turn order.
-        for (int i = 0; i < turnOrder.size(); i++) {
-            if (turnOrder.get(i) == context.getPlayer()) {
-                context.setCurrentTurnIndex(i);
-                break;
-            }
+    List<String> logs = new ArrayList<>();
+    for (Combatant c : context.getTurnOrder()) {
+        if (c == context.getPlayer() || !c.isAlive()) continue;
+
+        // The EffectManager handles stuns internally. 
+        // If your Combatant has a 'canAct()' method that checks the stun flag:
+        if (!c.canAct()) {
+            logs.add(c.getName() + " is incapacitated!");
+            c.onEndTurn(); // This triggers EffectManager.tickEffects
+            continue;
         }
-        return logs;
+
+        // Standard Enemy AI
+        Action enemyAction = new BasicAttack(); 
+        enemyAction.execute(c, context.getPlayer(), context);
+        c.onEndTurn();
+        
+        logs.add(c.getName() + " attacked " + context.getPlayer().getName());
+        
+        if (context.isPlayerDefeated()) break;
     }
+    return logs;
+}
 
     // Check if battle is over, return "win", "lose", or null.
     public String getBattleOutcome() {

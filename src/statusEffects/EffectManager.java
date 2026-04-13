@@ -1,82 +1,46 @@
 package statusEffects;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import combatant.*;
 
-public class EffectManager{
+import java.util.*;
+import combatant.Combatant;
 
+public class EffectManager {
 
-    //to be called when applying a status effect
-
-    public int applyEffect(List<StatusEffects> activeEffects, ArcaneBuffEffect e) { //can only add 1 of such status effects
-        boolean check = activeEffects.stream()
-                                     .noneMatch(s->s.getType() == Effects.ARCANEBUFF);
-        if (check){
-            activeEffects.add(e);
-            return e.getAttack();
-        }
-        return 0;
-    }
-
-    public int applyEffect(List<StatusEffects> activeEffects, DefenseBuffEffect e) { //option to add multiple
-        activeEffects.add(e);
-        return e.getDefense();
-    }
-
-    public boolean applyEffect(List<StatusEffects> activeEffects, StunEffect e) { //option to add multiple
-        activeEffects.add(e);
-        return e.setStun();
-    }
-
-    public boolean applyEffect(List<StatusEffects> activeEffects, InvulnerabilityEffect e) { //option to add multiple
-        activeEffects.add(e);
-        return e.setInvulnerability();
-    }
-
-    //to be called each turn
-    public void tickEffects(List<StatusEffects> activeEffects, Combatant combatant) {
-        //tick all effects
-        for (StatusEffects effect : activeEffects) {
-            effect.tick();
-        }
-        //collect expired items to list
-        List<StatusEffects> res = activeEffects.stream()
-                     .filter(s->s.isExpired())
-                     .collect(Collectors.toList());
-
-        //reverse the stat changes of expired effects
-        for (StatusEffects status : res){
-            Effects check = status.getType();
-            switch(check){
-                case ARCANEBUFF -> {
-                    combatant.setBaseAttack(combatant.getBaseAttack() - 10); // reverse the +10 applied on add
-                }
-                case DEFENSEBUFF -> {
-                    combatant.setBaseDefense(combatant.getBaseDefense() - 10); // reverse the +10 applied on add
-                }
-                case INVULNERABILITYEFFECT -> {
-                    combatant.setInvulnerability(false);
-                }
-                case STUNEFFECT -> {
-                    combatant.setStun(false);
-                }
+    public void applyEffect(List<StatusEffects> activeEffects, StatusEffects newEffect, Combatant target) {
+        // Handle uniqueness for ARCANEBUFF
+        if (newEffect.getType() == Effects.ARCANEBUFF) {
+            for (StatusEffects s : activeEffects) {
+                if (s.getType() == Effects.ARCANEBUFF) return; 
             }
         }
-
-        activeEffects.removeAll(res);
+        activeEffects.add(newEffect);
+        newEffect.apply(target);
     }
 
+    public void tickEffects(List<StatusEffects> activeEffects, Combatant combatant) {
+        Iterator<StatusEffects> iterator = activeEffects.iterator();
+        while (iterator.hasNext()) {
+            StatusEffects effect = iterator.next();
+            effect.tick(); 
+            if (effect.isExpired()) {
+                effect.remove(combatant); // This reverses the buff/stun/etc.
+                iterator.remove();
+            }
+        }
+    }
 
-    public void clearEffects(List<StatusEffects> activeEffects) {
+    // Called when the battle ends to wipe all buffs/debuffs
+    public void clearEffects(List<StatusEffects> activeEffects, Combatant combatant) {
+        for (StatusEffects effect : activeEffects) {
+            effect.remove(combatant);
+        }
         activeEffects.clear();
     }
 
     public List<String> getEffectDescriptions(List<StatusEffects> activeEffects) {
         List<String> descriptions = new ArrayList<>();
         for (StatusEffects effect : activeEffects) {
-            descriptions.add(effect.getType() + " (" + effect.duration + " turns)");
+            String dur = (effect.getDuration() == Integer.MAX_VALUE) ? "Perm" : effect.getDuration() + "t";
+            descriptions.add(effect.getType() + " [" + dur + "]");
         }
         return descriptions;
     }

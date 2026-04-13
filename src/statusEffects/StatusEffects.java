@@ -1,40 +1,38 @@
 package statusEffects;
 
+import combatant.Combatant;
+
 public abstract class StatusEffects {
     protected Effects type;
-    protected double duration;
-    
-    public StatusEffects(Effects type,double duration){
+    protected int duration; // Changed to int for easier ticking; use Integer.MAX_VALUE for infinity
+
+    public StatusEffects(Effects type, int duration) {
         this.type = type;
         this.duration = duration;
     }
 
-    public Effects getType(){
+    public Effects getType() {
         return type;
     }
 
-    protected void tick(){
-        if (duration>0)
+    // This method is called by the manager every turn
+    public void tick() {
+        if (duration > 0 && duration != Integer.MAX_VALUE) {
             duration--;
+        }
     }
 
-    protected boolean isExpired(){
-        return this.duration<=0;
+    public boolean isExpired() {
+        return duration <= 0;
     }
 
-    protected int getDefense(){
-        return 0;
-    }
-
-    protected int getAttack(){
-        return 0;
-    }
-
-    protected boolean setStun(){
-        return false;
-    } 
-
-    protected boolean setInvulnerability(){
-        return false;
+    // MANDATORY METHODS for all subclasses
+    // Each effect will define exactly what it changes on the combatant
+    public abstract void apply(Combatant target);
+    public abstract void remove(Combatant target);
+    
+    // Helper for UI/Console output
+    public int getDuration() {
+        return duration;
     }
 }
