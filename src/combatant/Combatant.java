@@ -34,6 +34,7 @@ public abstract class Combatant {
         this.speed = speed;
         this.inventory = new ArrayList<Item>();
         this.effectManager = new EffectManager();
+        
         this.availableActions = new ArrayList<Action>();
     }
     //health attributes
