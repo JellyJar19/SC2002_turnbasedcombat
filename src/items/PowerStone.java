@@ -1,6 +1,6 @@
-package src.items;
+package items;
 
-import src.combatant.Combatant;
+import combatant.Combatant;
 
 public class PowerStone implements Item {
     public String getName() {

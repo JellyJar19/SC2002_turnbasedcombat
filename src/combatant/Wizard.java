@@ -1,7 +1,7 @@
-package src.combatant;
+package combatant;
 
 import action.ArcaneBlast;
-import src.action.*;
+import action.*;
 
 public class Wizard extends Combatant {
     public Wizard() {

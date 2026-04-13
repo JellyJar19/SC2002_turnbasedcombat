@@ -1,6 +1,6 @@
-package src.items;
+package items;
 
-import src.combatant.Combatant;
+import combatant.Combatant;
 
 public interface Item {
     public String getName();

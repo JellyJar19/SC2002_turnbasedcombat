@@ -1,6 +1,6 @@
-package src.combatant;
+package combatant;
 
-import src.action.*;
+import action.*;
 
 public class Warrior extends Combatant {
     public Warrior() {

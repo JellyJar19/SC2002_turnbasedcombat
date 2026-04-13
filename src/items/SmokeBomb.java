@@ -1,7 +1,7 @@
-package src.items;
+package items;
 
-import src.combatant.*;
-import src.statusEffects.*;
+import combatant.*;
+import statusEffects.*;
 
 public class SmokeBomb implements Item {
     public String getName() {
