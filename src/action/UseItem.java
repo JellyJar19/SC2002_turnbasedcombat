@@ -1,6 +1,7 @@
 package action;
 import items.*;
 import combatant.*;
+import battleEngine.*;
 
 public class UseItem extends AbstractActions{
     private Item item;

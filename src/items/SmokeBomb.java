@@ -2,6 +2,7 @@ package items;
 
 import combatant.*;
 import statusEffects.*;
+import battleEngine.*;
 
 public class SmokeBomb implements Item {
     public String getName() {

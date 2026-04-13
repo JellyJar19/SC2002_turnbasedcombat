@@ -1,6 +1,7 @@
 package action;
 import statusEffects.*;
 import combatant.*;
+import battleEngine.*;
 
 public class ArcaneBlast extends BasicAttack{
     public ArcaneBlast(EffectStage e){

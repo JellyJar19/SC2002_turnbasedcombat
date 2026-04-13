@@ -1,6 +1,7 @@
 package action;
-import statusEffects.*;
+
 import combatant.*;
+import battleEngine.*;
 
 public class BasicAttack extends AbstractActions{
     private int dmg;

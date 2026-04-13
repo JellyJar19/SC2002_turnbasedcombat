@@ -1,7 +1,7 @@
 package action;
 import combatant.*;
 import statusEffects.*;
-
+import battleEngine.*;
 
 public class ShieldBash extends BasicAttack{
 

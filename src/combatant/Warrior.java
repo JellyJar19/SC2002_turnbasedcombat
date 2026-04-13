@@ -1,6 +1,8 @@
 package combatant;
 
 import action.*;
+import statusEffects.*;
+import battleEngine.*;
 
 public class Warrior extends Combatant {
     public Warrior() {

@@ -2,6 +2,7 @@ package items;
 
 import combatant.*;
 import action.*;
+import battleEngine.*;
 
 public class PowerStone implements Item {
     public String getName() {

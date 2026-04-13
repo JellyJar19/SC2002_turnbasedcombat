@@ -1,6 +1,5 @@
 package combatant;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.List;
 import items.*;
 import statusEffects.*;
 import action.*;
+import battleEngine.*;
 
 public abstract class Combatant {
     private String name;
@@ -182,7 +182,7 @@ public abstract class Combatant {
         return availableActions;
     }
 
-    protected void setDefaultActions(){
+    public void setDefaultActions(){
         BasicAttack ba = new BasicAttack();
         Defend df = new Defend();
         //UseItem ui = new UseItem();
@@ -193,7 +193,7 @@ public abstract class Combatant {
         this.availableActions = availableActions;
     }
 
-    protected void addAvailableActions(Action act){
+    public void addAvailableActions(Action act){
         this.availableActions.add(act);
     }
 

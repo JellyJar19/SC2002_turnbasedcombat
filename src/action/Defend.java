@@ -1,6 +1,7 @@
 package action;
 import statusEffects.*;
 import combatant.*;
+import battleEngine.*;
 
 public class Defend extends AbstractActions{
     public Defend(){
