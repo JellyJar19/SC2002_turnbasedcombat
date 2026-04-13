@@ -36,35 +36,37 @@ public class EffectManager{
 
     //to be called each turn
     public void tickEffects(List<StatusEffects> activeEffects,Combatant combatant) {
-        //tick all effects
-        for (StatusEffects effect : activeEffects) {
-            effect.tick();
-        }
-        //collect expired items to list
-        List<StatusEffects> res = activeEffects.stream()
-                     .filter(s->s.isExpired())
-                     .collect(Collectors.toList());
+        //tick all effects if not null
+        if (activeEffects!=null){
+            for (StatusEffects effect : activeEffects) {
+                effect.tick();
+            }
+            //collect expired items to list
+            List<StatusEffects> res = activeEffects.stream()
+                        .filter(s->s.isExpired())
+                        .collect(Collectors.toList());
 
-        //
-        for (StatusEffects status : res){
-            Effects check = status.getType();
-            switch(check){
-                case Effects.ARCANEBUFF -> {
-                    combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
-                }
-                case Effects.DEFENSEBUFF -> {
-                    combatant.setBaseDefense(combatant.getBaseDefense()+status.getDefense());
-                }
-                case Effects.INVULNERABILITYEFFECT -> {
-                    combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
-                }
-                case Effects.STUNEFFECT -> {
-                    combatant.setStun(status.setStun());
+            //
+            for (StatusEffects status : res){
+                Effects check = status.getType();
+                switch(check){
+                    case Effects.ARCANEBUFF -> {
+                        combatant.setBaseAttack(combatant.getBaseAttack()+status.getAttack()); //will return -10 if exipired
+                    }
+                    case Effects.DEFENSEBUFF -> {
+                        combatant.setBaseDefense(combatant.getBaseDefense()+status.getDefense());
+                    }
+                    case Effects.INVULNERABILITYEFFECT -> {
+                        combatant.setInvulnerability(status.setInvulnerability()); //will return false if expired
+                    }
+                    case Effects.STUNEFFECT -> {
+                        combatant.setStun(status.setStun());
+                    }
                 }
             }
-        }
 
-        activeEffects.removeAll(res);
+            activeEffects.removeAll(res);
+        }
     }
 
 
