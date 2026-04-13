@@ -83,8 +83,8 @@ public class UI {
         System.out.println("3. Power Stone (use special skill without cooldown)");
         for (int i = 0; i < 2; i++) {
             int choice;
-            System.out.print("Item " + (i+1) + ": ");
             while(true){
+                System.out.print("Item " + (i+1) + ": ");
                 try{
                     choice = scanner.nextInt();
                     if (choice == 1){
