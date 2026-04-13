@@ -8,7 +8,6 @@ public class Goblin extends Combatant{
 
     public Goblin() {
         super("Goblin", 55, 35, 15, 25);
-        this.setDefaultActions();
     }
 
     @Override
