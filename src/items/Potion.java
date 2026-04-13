@@ -1,6 +1,7 @@
-package src.items;
+package items;
 
-import src.combatant.*;
+import combatant.*;
+import action.Action;
 
 public class Potion implements Item {
     private int healAmount = 100;
