@@ -70,13 +70,6 @@ public abstract class Combatant {
     //actions
     public abstract Action getSpecialSkill();
 
-    //public void addStatusEffect(StatusEffects effect) {
-    //    this.activeEffects.add(effect);
-    // } CHOOSE TOP OR BOTTOM 
-    // public void addStatusEffect(StatusEffects effect){
-    //     this.activeEffects.applyEffect(this.activeEffects, effect);
-    // }
-
     public void decreaseCooldown() {
         if (this.specialCooldown > 0) {
             this.specialCooldown = this.specialCooldown - 1;
