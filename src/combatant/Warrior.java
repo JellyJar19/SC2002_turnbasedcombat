@@ -16,9 +16,7 @@ public class Warrior extends Combatant {
 
     @Override
     public void performTurn(BattleContext context) {
-        //to be implemented
-        // should we implement this as a case statement based on the action chosen by the player?
-        
+        // handled by UI 
     }
 
 }
