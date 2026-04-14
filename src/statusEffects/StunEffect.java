@@ -1,13 +1,19 @@
 package statusEffects;
 
-public class StunEffect extends StatusEffects{
+import combatant.Combatant;
 
-    public StunEffect(){
-        super(Effects.STUNEFFECT,2);
+public class StunEffect extends StatusEffects {
+    public StunEffect() {
+        super(Effects.STUNEFFECT, 1);
     }
 
     @Override
-    protected boolean setStun(){
-        return !this.isExpired();
+    public void apply(Combatant target) {
+        target.setStun(true);
+    }
+
+    @Override
+    public void remove(Combatant target) {
+        target.setStun(false);
     }
 }

@@ -1,13 +1,21 @@
 package statusEffects;
 
-public class DefenseBuffEffect extends StatusEffects {
+import combatant.Combatant;
 
-    public DefenseBuffEffect(){
-        super(Effects.DEFENSEBUFF,2);
+public class DefenseBuffEffect extends StatusEffects {
+    private final int bonus = 10;
+
+    public DefenseBuffEffect() {
+        super(Effects.DEFENSEBUFF, 2);
     }
 
     @Override
-    protected int getDefense() {
-        return (this.isExpired())? -10:10;
+    public void apply(Combatant target) {
+        target.setBaseDefense(target.getBaseDefense() + bonus);
+    }
+
+    @Override
+    public void remove(Combatant target) {
+        target.setBaseDefense(target.getBaseDefense() - bonus);
     }
 }

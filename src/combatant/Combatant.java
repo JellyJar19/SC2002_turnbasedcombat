@@ -1,7 +1,6 @@
 package combatant;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import items.*;
@@ -19,7 +18,7 @@ public abstract class Combatant {
     private int specialCooldown;
     private boolean stun;
     private boolean invulnerable;
-    private List<StatusEffects> activeEffects;
+    private List<StatusEffects> activeEffects = new ArrayList<>();
     private List<Item> inventory;
     private List<Action> availableActions;
     private EffectManager effectManager = new EffectManager();
@@ -47,6 +46,7 @@ public abstract class Combatant {
         }
     }
 
+    
     public void heal(int healAmount) {
         if (this.hp <= 0) {
             System.out.println("Cannot heal a defeated combatant.");
@@ -173,6 +173,9 @@ public abstract class Combatant {
     public void setStun(boolean boo){
         this.stun=boo;
     }
+    public boolean canAct() {
+        return isAlive() && !this.stun; 
+    }
 
 
     //combatant logic
@@ -201,45 +204,22 @@ public abstract class Combatant {
 
     //dispatcher method for statusEffects - this will be the only single public entry point
     public void applyStatusEffect(StatusEffects effect) {
-    if (effect instanceof ArcaneBuffEffect) {
-            onApplyEffect((ArcaneBuffEffect) effect);
-        } 
-        else if (effect instanceof DefenseBuffEffect) {
-            onApplyEffect((DefenseBuffEffect) effect);
-        } 
-        else if (effect instanceof StunEffect) {
-            onApplyEffect((StunEffect) effect);
-        } 
-        else if (effect instanceof InvulnerabilityEffect) {
-            onApplyEffect((InvulnerabilityEffect) effect);
-        } 
-        else {
-            throw new IllegalArgumentException("Unknown effect: " + effect.getClass().getSimpleName());
-        }
+    this.activeEffects.add(effect);
+    effect.apply(this); // Polymorphic call
     }
 
-    protected void onApplyEffect(ArcaneBuffEffect e){ //called when first applied
-        this.baseAttack+=effectManager.applyEffect(activeEffects, e);
+    public void onEndTurn() {
+        // Tick all effects and remove expired ones
+        effectManager.tickEffects(this.activeEffects, this);
     }
 
-    protected void onApplyEffect(DefenseBuffEffect e){ //called when first applied
-        this.baseDefense+=effectManager.applyEffect(activeEffects, e);
-    }
-
-    protected void onApplyEffect(StunEffect e){ //called when first applied
-        this.stun=effectManager.applyEffect(activeEffects, e);
-    }
-
-    protected void onApplyEffect(InvulnerabilityEffect e){ //called when first applied
-        this.invulnerable=effectManager.applyEffect(activeEffects, e);
-    }
-
-    public void onEndTurn(){ //called on end of combatant turn to remove all statusEffects that are expired
-        effectManager.tickEffects(activeEffects, this); 
-    }
-
+    
     public void onClearEffects(){
-        effectManager.clearEffects(activeEffects);
+        effectManager.clearEffects(activeEffects, this);
+    }
+
+    public List<String> getStatusDescriptions() {
+        return effectManager.getEffectDescriptions(this.activeEffects);
     }
 
     public void getDesc(){
