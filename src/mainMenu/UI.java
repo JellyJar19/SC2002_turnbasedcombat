@@ -219,21 +219,41 @@ public class UI {
     }
     
     private void displayStatus() {
-        Combatant player = engine.getContext().getPlayer();
-        System.out.println("\n" + player.getName() + " HP: " + player.getHp() + "/" + player.getMaxHp());
-        System.out.println("Special Cooldown: " + player.getSpecialCooldown());
-        System.out.print("Items: ");
-        for (Item item : engine.getContext().getPlayerItems()) {
-            System.out.print(item.getName() + " ");
-        }
-        System.out.println();
-        System.out.println("Enemies:");
-        for (Combatant e : engine.getContext().getEnemies()) {
-            if (e.isAlive()) {
-                System.out.println("  " + e.getName() + " HP: " + e.getHp() + "/" + e.getMaxHp());
-            }
+    Combatant player = engine.getContext().getPlayer();
+    
+    // Header
+    System.out.println("\n========================================");
+    System.out.println("PLAYER STATUS: " + player.getName());
+    System.out.println("HP: " + player.getHp() + "/" + player.getMaxHp());
+    
+    // Display current stats (will show changes from buffs/debuffs)
+    System.out.println("ATK: " + player.getBaseAttack() + " | DEF: " + player.getBaseDefense());
+    
+    // Display Cooldown
+    String cdStatus = (player.getSpecialCooldown() == 0) ? "READY" : player.getSpecialCooldown() + " turns left";
+    System.out.println("Special Cooldown: " + cdStatus);
+    
+    // Show active status effects from our EffectManager
+    List<String> effects = player.getStatusDescriptions();
+    if (!effects.isEmpty()) {
+        System.out.println("Active Effects: " + String.join(", ", effects));
+    } else {
+        System.out.println("Active Effects: None");
+    }
+    
+    // Item count
+    System.out.println("Items: " + engine.getContext().getPlayerItems().size() + " remaining");
+    System.out.println("========================================");
+
+    // Enemy List
+    System.out.println("ENEMIES:");
+    for (Combatant e : engine.getContext().getEnemies()) {
+        if (e.isAlive()) {
+            System.out.println(" - " + e.getName() + " [HP: " + e.getHp() + "/" + e.getMaxHp() + "]");
         }
     }
+    System.out.println("========================================\n");
+}
     
     private void showEndScreen(boolean victory, int rounds, int remainingHp, long enemiesRemaining) {
         if (victory) {

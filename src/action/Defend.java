@@ -8,10 +8,12 @@ public class Defend extends AbstractActions{
     }
 
     @Override
-    public <T extends Combatant> boolean execute(T activechar, T target, BattleContext battle) {
-        activechar.applyStatusEffect(this.effectStage.createEffect(Effects.DEFENSEBUFF));
-        return true;
-    }
+    public boolean execute(Combatant user, Combatant target, BattleContext context) {
+    // Apply a buff that lasts only 1 turn
+    StatusEffects defenseBuff = new DefenseBuffEffect(); 
+    user.applyStatusEffect(defenseBuff); 
+    return true;
+}
     @Override
     public String getName() {
         return "Defend";

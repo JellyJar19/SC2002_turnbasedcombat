@@ -17,13 +17,9 @@ public class Goblin extends Combatant{
     
     @Override
     public void performTurn(BattleContext context) {
-        //to be implemented
-        // Depends on implementation of BasicAttackStrategy because otherwise we can just loop through playerlist and attack first one
-        // i.e. the code will end up looking like:
-        // while playerList is not empty:
-        //     take first player in list
-        //     this.executeAction(BasicAttack, player, context);
-        //    end while
+        if (this.canAct()) {
+        new BasicAttack().execute(this, context.getPlayer(), context);
+        }
     }
 
 }

@@ -16,8 +16,9 @@ public class Wolf extends Combatant{
     
     @Override
     public void performTurn(BattleContext context) {
-        //to be implemented
-        // refer to Goblin class for the expected battle strategy. 
+        if (this.canAct()) {
+        new BasicAttack().execute(this, context.getPlayer(), context);
+        }
     }
 
     
