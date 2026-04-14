@@ -1,0 +1,298 @@
+classDiagram
+    direction TB
+
+    %% --- Battle Engine Package ---
+    class BattleEngine {
+        -context : BattleContext
+        -battleLog : List~String~ 
+        +BattleEngine(BattleContext)
+        +getContext() BattleContext
+        +getBattleLog() List~String~
+        +clearLog() void
+        +processRoundStart() void
+        +processTurn(Combatant) String
+        +executePlayerAction(int, int, int) String
+        +processEnemyTurns() List~String~
+        +getBattleOutcome() String
+        +getPlayerActionNames() List~String~
+        +getAliveEnemies() List~Combatant~
+    }
+    
+    class BattleContext {
+        -player : Combatant
+        -enemies : List~Combatant~
+        -turnOrder : List~Combatant~ 
+        -currentTurnIndex : int 
+        -round : int 
+        -difficulty : int 
+        -playerItems : List~Item~ 
+        -backupSpawned : boolean 
+        -backupEnemies : List~Combatant~ 
+        +BattleContext()
+        +getPlayer() Combatant
+        +getEnemies() List~Combatant~
+        +getTurnOrder() List~Combatant~
+        +getCurrentTurnIndex() int
+        +setCurrentTurnIndex(int) void
+        +getRound() int
+        +incremetRoud() void
+        +getDifficulty() int
+        +getPlayerItems() List~Item~
+        +isBackupSpawned() boolean
+        +setBackupSpawned(boolean) void
+        +getBackupEemies() List~Combatat~
+        +setBackupEemies(List~Combatat~) void
+        +updateTurnOrder() void
+        +getNextAliveCombatant() Combatant
+        +advanceTurn() void
+        +isPlayerDefeated() boolean
+        +areAllEnemiesDefeated() boolean
+        +spawnBackup() void
+    }
+    
+    BattleEngine --> BattleContext : manages >
+    BattleContext o-- Combatant : contains >
+
+    %% --- Combatant Package ---
+    class Combatant {
+        <<abstract>>
+        -name : String 
+        -hp : int 
+        -maxHp : int 
+        -baseAttack : int 
+        -baseDefense : int 
+        -speed : int 
+        -specialCooldown : int 
+        -stu : boolean 
+        -invulnerable : boolean 
+        -activeEffects : List~StatusEffects~ 
+        -inventory : List~Item~ 
+        -availableActions : List~Action~ 
+        -effectManager : EffectManager 
+        +takeDamage(int) void
+        +heal(int) void
+        +isAlive() boolean
+        +getSpecialSkill()* Action
+        +performTurn(BattleContext)* void
+        +decreaseCooldown() void
+        +getName() String
+        +setName(String) void
+        +getHp() int
+        +setHp(int) void
+        +getMaxHp() int
+        +setMaxHp(int) void
+        +getBaseAttack() int
+        +setBaseAttack(int) void
+        +getBaseDefense() int
+        +setBaseDefense(int) void
+        +getSpeed() int
+        +setSpeed(int) void
+        +getSpecialCooldown() int
+        +setSpecialCooldown(int) void
+        +getInventory() List~Item~
+        +setInventory(List~Item~)
+        +getInvulnerability() boolean
+        +setInvulnerability(boolean) void
+        +getStun() boolean
+        +setStun(boolean) void
+        +canAct() boolean
+        +getAvailableActions() List~Action~
+        +setAvailableActions(List~Action~) void
+        +addAvailabelActions(Action act) void
+        +executeAction(Action, Combatant, BattleContext) void
+        +applyStatusEffect(StatusEffects) void
+        +onEndTurn() void
+        +onClearEffects() void
+        +getStatusDescriptions() List~String~
+        +getDesc() void
+    }
+    
+    class Warrior {
+        +Warrior()
+        +getSpecialSkill() Action
+        +performTurn(BattleContext) void
+    }
+    
+    class Wizard {
+        +Wizard()
+        +getSpecialSkill() Action
+        +performTurn(BattleContext)
+    }
+    
+    class Goblin {
+        +Goblin()
+        +getSpecialSkill() Action
+        +performTurn(BattleContext)
+    }
+    
+    class Wolf {
+        +Wolf()
+        +getSpecialSkill() Action
+        +performTurn(BattleContext)
+    }
+
+    Combatant <|-- Warrior
+    Combatant <|-- Wizard
+    Combatant <|-- Goblin
+    Combatant <|-- Wolf
+
+    %% --- Action Package ---
+    class Action {
+        <<interface>>
+        +execute(Combatant, Combatant, BattleContext) boolean
+        +getName() String
+    }
+    
+    class AbstractActions {
+        <<abstract>>
+        #effectStage : EffectStage
+        +AbstractActions()
+        +calculateDamage(Combatant, Combatant) int
+    }
+    
+    class BasicAttack {
+        -dmg : int
+        +BasicAttack()
+        +getDamage() int
+    }
+    
+    class ArcaneBlast {
+        +ArcaneBlast()
+    }
+    
+    class ShieldBash {
+        +ShieldBash()
+    }
+    
+    class Defend {
+        +Defend()
+    }
+    
+    class UseItem {
+        -item : Item 
+        +UseItem(Item)
+    }
+
+    Action <|.. AbstractActions
+    AbstractActions <|-- BasicAttack
+    AbstractActions <|-- Defend
+    AbstractActions <|-- UseItem
+    BasicAttack <|-- ArcaneBlast
+    BasicAttack <|-- ShieldBash
+    
+    class EffectStage {
+        <<interface>>
+        +createEffect(Effects) StatusEffects
+    }
+    
+    class StdEffectStage {
+        +createEffect(Effects) StatusEffects
+    }
+    
+    Combatant "1" *-- "*" Action : availableActions >
+
+    %% --- Items Package ---
+    class Item {
+        <<interface>>
+        +getName() String
+        +use(Combatant, BattleContext) boolean
+    }
+    
+    class Potion {
+        -healAmount : int = 100
+        +Potion()
+    }
+    
+    class PowerStone {
+        +PowerStone()
+    }
+    
+    class SmokeBomb {
+        +SmokeBomb()
+    }
+
+    Item <|.. Potion
+    Item <|.. PowerStone
+    Item <|.. SmokeBomb
+    
+    UseItem --> Item : executes >
+    Combatant "1" *-- "*" Item : inventory >
+    BattleContext "1" o-- "*" Item : playerItems >
+
+    %% --- Status Effects Package ---
+    class StatusEffects {
+        <<abstract>>
+        #type : Effects
+        #duration : int
+        +StatusEffects(Effects, int) 
+        +tick() void
+        +isExpired() boolean
+        +apply(Combatant)* void
+        +remove(Combatant)* void
+    }
+    
+    class ArcaneBuffEffect {
+        -attackBonus : int = 10
+        +ArcaneBuffEffect()
+    }
+    
+    class DefenseBuffEffect {
+        -bonus : int = 10
+        +DefenseBuffEffect()
+    }
+    
+    class InvulnerabilityEffect {
+        +InvulnerabilityEffect()
+    }
+    
+    class StunEffect {
+        +StunEffect()
+    }
+    
+    class EffectManager {
+        +applyEffect(List~StatusEffects~, StatusEffects, Combatant) void
+        +tickEffects(List~StatusEffects~, Combatant) void
+        +clearEffects(List~StatusEffects~, Combatant) void
+        +getEffectDescriptions(List~StatusEffects~) List~String~
+    }
+    
+    class Effects {
+        <<enumeration>>
+        ARCANEBUFF
+        DEFENSEBUFF
+        INVULNERABILITYEFFECT
+        STUNEFFECT
+    }
+
+    StatusEffects <|-- ArcaneBuffEffect
+    StatusEffects <|-- DefenseBuffEffect
+    StatusEffects <|-- InvulnerabilityEffect
+    StatusEffects <|-- StunEffect
+    
+    StatusEffects --> Effects : uses enum >
+    EffectStage --> Effects : consumes enum >
+    
+    Combatant "1" *-- "*" StatusEffects : activeEffects >
+    Combatant "1" *-- "1" EffectManager : delegates to >
+    EffectStage <|.. StdEffectStage
+    AbstractActions --> EffectStage : relies on >
+
+    %% --- mainMenu Package ---
+
+    class UI{
+        -scanner : Scanner
+        -engine : BattleEngine
+        +UI()
+        +start() void
+        -selectCharacter() Combatant
+        -selectItems() List~Item~
+        -selectDifficulty() int
+        -spawnEnemies(int) List~Combatant~
+        -getBackupEmenies(int) List~Combatant~
+        -runBattle() boolean
+        -displayStatus() void
+        -showEndScreen(boolean, int, int, long) void
+        +main(String[] args)$ void
+    }
+
+    UI --> BattleEngine : -uses
