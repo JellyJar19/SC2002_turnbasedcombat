@@ -119,7 +119,25 @@ public class UI {
         System.out.println("1. Easy (3 Goblins)");
         System.out.println("2. Medium (1 Goblin + 1 Wolf, backup: 2 Wolves)");
         System.out.println("3. Hard (2 Goblins, backup: 1 Goblin + 2 Wolves)");
-        return scanner.nextInt();
+        //return scanner.nextInt();
+        while(true){
+            try{
+                System.out.print("Selection: ");
+                int input = scanner.nextInt();
+                if (input<1 || input>3){
+                    throw new ArithmeticException("Select options 1 to 3 only!");
+                }
+                return input;
+            }
+            catch (InputMismatchException e){
+                scanner.next();
+                System.out.println("Input integers only!");
+
+            }
+            catch (ArithmeticException e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
     
     private List<Combatant> spawnEnemies(int difficulty) {
@@ -166,8 +184,24 @@ public class UI {
                 for (int i = 0; i < actions.size(); i++) {
                     System.out.println((i+1) + ". " + actions.get(i));
                 }
-                int actionChoice = scanner.nextInt() - 1;
-                if (actionChoice < 0 || actionChoice >= actions.size()) continue;
+                int actionChoice;
+                while (true){
+                    try{
+                        int choice = scanner.nextInt();
+                        if (choice < 1 || choice > actions.size()){
+                            throw new ArithmeticException("Input choices 1 to "+actions.size()+" only!");
+                        }
+                        actionChoice = choice - 1;
+                        break;
+                    }
+                    catch (InputMismatchException e){
+                        scanner.next();
+                        System.out.println("Input integers only!");
+                    }
+                    catch (ArithmeticException e){
+                        System.out.println(e.getMessage());
+                    }
+                }
                 
                 int targetIdx = -1;
                 int itemIdx = -1;
@@ -179,8 +213,23 @@ public class UI {
                         Combatant e = enemies.get(i);
                         System.out.println((i+1) + ". " + e.getName() + " (HP: " + e.getHp() + ")");
                     }
-                    targetIdx = scanner.nextInt() - 1;
-                    if (targetIdx < 0 || targetIdx >= enemies.size()) continue;
+                    while (true){
+                        try{
+                            int choice = scanner.nextInt();
+                            if (choice < 1 || choice > enemies.size()){
+                                throw new ArithmeticException("Input choices 1 to "+enemies.size()+" only!");
+                            }
+                            targetIdx = choice - 1;
+                            break;
+                        }
+                        catch (InputMismatchException e){
+                            scanner.next();
+                            System.out.println("Input integers only!");
+                        }
+                        catch (ArithmeticException e){
+                            System.out.println(e.getMessage());
+                        }
+                    }
                     // Map to actual enemy index in context
                     targetIdx = engine.getContext().getEnemies().indexOf(enemies.get(targetIdx));
                 }
@@ -194,8 +243,25 @@ public class UI {
                     for (int i = 0; i < items.size(); i++) {
                         System.out.println((i+1) + ". " + items.get(i).getName());
                     }
-                    itemIdx = scanner.nextInt() - 1;
-                    if (itemIdx < 0 || itemIdx >= items.size()) continue;
+                    while (true){
+                        try{
+                            int choice = scanner.nextInt();
+                            if (choice < 1 || choice > items.size()){
+                                throw new ArithmeticException("Input choices 1 to "+items.size()+" only!");
+                            }
+                            itemIdx = choice - 1;
+                            break;
+                        }
+                        catch (InputMismatchException e){
+                            scanner.next();
+                            System.out.println("Input integers only!");
+                        }
+                        catch (ArithmeticException e){
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    //itemIdx = scanner.nextInt() - 1;
+                    //if (itemIdx < 0 || itemIdx >= items.size()) continue;
                 }
                 String result = engine.executePlayerAction(actionChoice, targetIdx, itemIdx);
                 System.out.println(result);
